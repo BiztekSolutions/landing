@@ -319,7 +319,7 @@ export function Footer() {
       >
         <Grid>
           <BrandColumn>
-            <LogoLink href="#hero" aria-label={`${siteConfig.company.name} - Inicio`}>
+            <LogoLink href="/" aria-label={`${siteConfig.company.name} - Inicio`}>
               <img src={logo} alt={`${siteConfig.company.name} logo`} />
             </LogoLink>
             <Tagline>{siteConfig.company.tagline}.</Tagline>

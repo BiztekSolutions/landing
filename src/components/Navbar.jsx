@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 import styled, { css } from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
@@ -239,6 +240,8 @@ const MobileCTAButton = styled.a`
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+  const isHome = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -250,12 +253,13 @@ export function Navbar() {
   }, [])
 
   const navItems = [
-    { label: "Servicios", href: "#servicios" },
-    { label: "Cómo trabajamos", href: "#proceso" },
-    { label: "Tecnologías", href: "#tecnologias" },
-    { label: "Clientes", href: "#clientes" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Servicios", hash: "servicios" },
+    { label: "Cómo trabajamos", hash: "proceso" },
+    { label: "Clientes", hash: "clientes" },
+    { label: "Contacto", hash: "contacto" },
   ]
+
+  const href = (hash) => isHome ? `#${hash}` : `/#${hash}`
 
   const handleNavClick = () => {
     setMobileMenuOpen(false)
@@ -264,19 +268,19 @@ export function Navbar() {
   return (
     <Nav initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
       <NavContainer $scrolled={scrolled}>
-        <Logo href="#hero" aria-label={`${siteConfig?.name ?? "Biztek"} - Inicio`}>
+        <Logo href={isHome ? "#hero" : "/"} aria-label={`${siteConfig?.name ?? "Biztek"} - Inicio`}>
           <img src={logo} alt="Logo" />
         </Logo>
 
         <NavLinks>
           {navItems.map((item) => (
-            <li key={item.href}>
-              <NavLink href={item.href}>{item.label}</NavLink>
+            <li key={item.hash}>
+              <NavLink href={href(item.hash)}>{item.label}</NavLink>
             </li>
           ))}
         </NavLinks>
 
-        <CTAButton href="#contacto">Contactanos</CTAButton>
+        <CTAButton href={href("contacto")}>Contactanos</CTAButton>
 
         <HamburgerButton
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -300,14 +304,14 @@ export function Navbar() {
           >
             <MobileNavLinks>
               {navItems.map((item) => (
-                <li key={item.href}>
-                  <MobileNavLink href={item.href} onClick={handleNavClick}>
+                <li key={item.hash}>
+                  <MobileNavLink href={href(item.hash)} onClick={handleNavClick}>
                     {item.label}
                   </MobileNavLink>
                 </li>
               ))}
             </MobileNavLinks>
-            <MobileCTAButton href="#contacto" onClick={handleNavClick}>
+            <MobileCTAButton href={href("contacto")} onClick={handleNavClick}>
               Contactanos
             </MobileCTAButton>
           </MobileMenu>
