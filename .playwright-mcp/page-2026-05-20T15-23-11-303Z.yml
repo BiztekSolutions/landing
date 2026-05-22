@@ -1,0 +1,261 @@
+- generic [ref=e2]:
+  - navigation:
+    - generic [ref=e3]:
+      - link "Biztek - Inicio" [ref=e4] [cursor=pointer]:
+        - /url: "#hero"
+        - img "Logo" [ref=e5]
+      - button "Menú de navegación" [ref=e6] [cursor=pointer]
+  - main [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e15]:
+        - generic [ref=e18]: BIZTEK · SOFTWARE STUDIO
+        - heading "Software que mueve distribuidoras" [level=1] [ref=e19]:
+          - text: Software que mueve
+          - generic [ref=e22]: distribuidoras
+        - paragraph [ref=e23]: Construimos software a medida que reemplaza planillas, conecta sistemas y libera horas de tu equipo. De idea a producción en semanas, no meses.
+        - generic [ref=e24]:
+          - link "Empezar un proyecto" [ref=e25] [cursor=pointer]:
+            - /url: https://api.whatsapp.com/send?phone=+5492345659559&text=Hola!%20Vi%20la%20landing%20de%20Biztek%20y%20me%20interesa%20charlar%20sobre%20un%20proyecto.
+            - text: Empezar un proyecto
+            - img [ref=e26]
+          - link "Ver caso de estudio" [ref=e28] [cursor=pointer]:
+            - /url: "#proyectos"
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: 4–8 sem
+            - generic [ref=e32]: MVP en producción
+          - generic [ref=e33]:
+            - generic [ref=e34]: 100%
+            - generic [ref=e35]: Código tuyo, sin lock-in
+          - generic [ref=e36]:
+            - generic [ref=e37]: 24/7
+            - generic [ref=e38]: Monitoreo post-launch
+      - generic [ref=e40]: scroll
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]: 01 · Servicios
+        - heading "Qué hacemos por tu negocio" [level=2] [ref=e46]
+        - paragraph [ref=e47]: Software a medida con foco en outcomes, no en horas facturables.
+      - generic [ref=e48]:
+        - article [ref=e49]:
+          - generic [ref=e50]: "01"
+          - generic [ref=e51]:
+            - img [ref=e53]
+            - heading "Desarrollo Web & Mobile" [level=3] [ref=e55]
+            - paragraph [ref=e56]: Aplicaciones rápidas, escalables y mantenibles. React, Next.js y React Native para web y mobile nativo.
+        - article [ref=e57]:
+          - generic [ref=e58]: "02"
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - heading "Integraciones & APIs" [level=3] [ref=e63]
+            - paragraph [ref=e64]: "Conectamos tus sistemas: ERP, CRM, pasarelas de pago, WhatsApp Business, Mapbox, Stripe, MercadoPago."
+        - article [ref=e65]:
+          - generic [ref=e66]: "03"
+          - generic [ref=e67]:
+            - img [ref=e69]
+            - heading "Automatización" [level=3] [ref=e71]
+            - paragraph [ref=e72]: Reemplazamos trabajo manual con flujos automáticos. Pedidos, facturación, notificaciones, reportes.
+        - article [ref=e73]:
+          - generic [ref=e74]: "04"
+          - generic [ref=e75]:
+            - img [ref=e77]
+            - heading "Cloud & DevOps" [level=3] [ref=e79]
+            - paragraph [ref=e80]: Docker, CI/CD, infra como código. Deploy en AWS, Vercel, Railway o tu propio VPS. SSL, monitoreo, backups.
+        - article [ref=e81]:
+          - generic [ref=e82]: "05"
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - heading "Data & IoT" [level=3] [ref=e88]
+            - paragraph [ref=e89]: Dashboards en tiempo real, trazabilidad con mapas y sensores, ETL y modelos de datos productivos.
+        - article [ref=e90]:
+          - generic [ref=e91]: "06"
+          - generic [ref=e92]:
+            - img [ref=e94]
+            - heading "Consultoría técnica" [level=3] [ref=e97]
+            - paragraph [ref=e98]: Auditorías de stack, refactor, performance y arquitectura. Sumamos seniority a tu equipo.
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - generic [ref=e102]: 02 · Proceso
+        - heading "De idea a producción, sin sorpresas" [level=2] [ref=e103]
+        - paragraph [ref=e104]: Sprints cortos. Demos en vivo. Vos ves avances reales cada semana.
+      - generic [ref=e106]:
+        - generic [ref=e108]:
+          - generic [ref=e109]: Paso 01
+          - heading "Descubrimiento" [level=4] [ref=e110]
+          - paragraph [ref=e111]: Entendemos tu negocio, no solo tu pedido. Mapeamos procesos, pain points y oportunidades reales.
+        - generic [ref=e113]:
+          - generic [ref=e114]: Paso 02
+          - heading "Diseño & Arquitectura" [level=4] [ref=e115]
+          - paragraph [ref=e116]: Definimos stack, flujos y experiencia. Te mostramos prototipos antes de escribir código.
+        - generic [ref=e118]:
+          - generic [ref=e119]: Paso 03
+          - heading "Build iterativo" [level=4] [ref=e120]
+          - paragraph [ref=e121]: Sprints de 1-2 semanas con demos en vivo. Vos ves avances reales, no slides de progreso.
+        - generic [ref=e123]:
+          - generic [ref=e124]: Paso 04
+          - heading "QA & Deploy" [level=4] [ref=e125]
+          - paragraph [ref=e126]: Pruebas automáticas, revisión de seguridad y deploy con cero downtime. SSL, monitoreo y backups incluidos.
+        - generic [ref=e128]:
+          - generic [ref=e129]: Paso 05
+          - heading "Soporte continuo" [level=4] [ref=e130]
+          - paragraph [ref=e131]: No te dejamos solo. Iteramos, mejoramos y mantenemos según tu negocio evoluciona.
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - generic [ref=e135]: 03 · Trabajos
+        - heading "Últimos proyectos a producción" [level=2] [ref=e136]
+      - generic [ref=e137]:
+        - generic [ref=e138]: Case Study · B2B SaaS
+        - heading "AbastoLink" [level=3] [ref=e139]
+        - paragraph [ref=e140]: Plataforma de gestión para distribuidoras y compradores
+      - generic [ref=e141]:
+        - generic [ref=e146]: abastolink.com
+        - img "AbastoLink" [ref=e147]
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - heading "El problema" [level=4] [ref=e150]
+          - paragraph [ref=e151]: Distribuidoras operaban con WhatsApp, planillas de Excel y llamados. Sin trazabilidad, sin visibilidad de stock, sin métricas. Cada pedido era un Tetris manual.
+          - heading "La solución" [level=4] [ref=e152]
+          - paragraph [ref=e153]: "Construimos una plataforma centralizada que conecta distribuidoras con compradores: catálogo digital, pedidos en tiempo real, mapa de entregas con geolocalización, dashboards con métricas de venta y módulo de descuentos por cliente."
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - heading "Resultados" [level=5] [ref=e156]
+            - generic [ref=e157]:
+              - generic [ref=e158]: Tiempo del pedido
+              - generic [ref=e159]: ↓ 70%
+            - generic [ref=e160]:
+              - generic [ref=e161]: Errores en entregas
+              - generic [ref=e162]: ↓ 85%
+            - generic [ref=e163]:
+              - generic [ref=e164]: Trazabilidad
+              - generic [ref=e165]: 100%
+          - generic [ref=e166]:
+            - heading "Stack" [level=5] [ref=e167]
+            - generic [ref=e168]:
+              - generic [ref=e169]: React 19
+              - generic [ref=e171]: Redux Toolkit
+              - generic [ref=e173]: Node.js
+              - generic [ref=e175]: PostgreSQL
+              - generic [ref=e177]: Mapbox GL
+              - generic [ref=e179]: Recharts
+      - link "¿Querés algo así para tu empresa? Hablemos" [ref=e182] [cursor=pointer]:
+        - /url: "#cta"
+        - text: ¿Querés algo así para tu empresa? Hablemos
+        - img [ref=e183]
+    - generic [ref=e187]:
+      - list [ref=e189]:
+        - listitem [ref=e190]:
+          - img [ref=e191]
+          - text: Respondemos en < 24hs
+        - listitem [ref=e193]:
+          - img [ref=e194]
+          - text: Sin contrato anual
+        - listitem [ref=e196]:
+          - img [ref=e197]
+          - text: Código tuyo desde día 1
+      - heading "¿Listo para construir algo que mueva la aguja?" [level=2] [ref=e199]
+      - paragraph [ref=e200]: Charlemos 30 min. Sin compromiso, sin slides aburridos.
+      - generic [ref=e201]:
+        - link "Agendar llamada" [ref=e202] [cursor=pointer]:
+          - /url: https://api.whatsapp.com/send?phone=+5492345659559&text=Hola!%20Quiero%20agendar%20una%20llamada%20con%20Biztek.
+          - img [ref=e203]
+          - text: Agendar llamada
+          - img [ref=e205]
+        - link "Escribinos un mail" [ref=e207] [cursor=pointer]:
+          - /url: mailto:solutionsbiztek@gmail.com
+    - generic [ref=e209]:
+      - generic [ref=e210]:
+        - generic [ref=e211]: 04 · Contacto
+        - heading "Hagamos algo bueno juntos" [level=2] [ref=e212]
+      - generic [ref=e213]:
+        - generic [ref=e214]:
+          - heading "Empezá una conversación" [level=3] [ref=e215]
+          - paragraph [ref=e216]: Contanos qué problema querés resolver, qué tenés hoy y para cuándo lo necesitás. Te respondemos en menos de 24hs.
+          - list [ref=e217]:
+            - listitem [ref=e218]:
+              - link "solutionsbiztek@gmail.com" [ref=e219] [cursor=pointer]:
+                - /url: mailto:solutionsbiztek@gmail.com
+                - img [ref=e220]
+                - text: solutionsbiztek@gmail.com
+            - listitem [ref=e223]:
+              - link "+5492345659559" [ref=e224] [cursor=pointer]:
+                - /url: https://api.whatsapp.com/send?phone=+5492345659559
+                - img [ref=e225]
+                - text: "+5492345659559"
+          - generic [ref=e228]:
+            - link "LinkedIn" [ref=e229] [cursor=pointer]:
+              - /url: https://linkedin.com/company/biztek-solutions
+              - img [ref=e230]
+            - link "Instagram" [ref=e232] [cursor=pointer]:
+              - /url: https://instagram.com/bizteksolutions
+              - img [ref=e233]
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: Nombre
+            - textbox "Nombre" [ref=e239]:
+              - /placeholder: Tu nombre
+          - generic [ref=e240]:
+            - generic [ref=e241]: Email
+            - textbox "Email" [ref=e242]:
+              - /placeholder: tu@email.com
+          - generic [ref=e243]:
+            - generic [ref=e244]: Empresa
+            - textbox "Empresa" [ref=e245]:
+              - /placeholder: Empresa (opcional)
+          - generic [ref=e246]:
+            - generic [ref=e247]: Mensaje
+            - textbox "Mensaje" [ref=e248]:
+              - /placeholder: Contanos tu proyecto...
+          - button "Enviar mensaje" [ref=e249] [cursor=pointer]:
+            - text: Enviar mensaje
+            - img [ref=e250]
+  - contentinfo [ref=e252]:
+    - generic [ref=e253]:
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - generic [ref=e256]: Biztek Solutions
+          - paragraph [ref=e258]: Software que mueve negocios
+          - generic [ref=e259]: Tomando proyectos
+        - generic [ref=e261]:
+          - heading "Producto" [level=5] [ref=e262]
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - link "Servicios" [ref=e265] [cursor=pointer]:
+                - /url: "#servicios"
+            - listitem [ref=e266]:
+              - link "Proceso" [ref=e267] [cursor=pointer]:
+                - /url: "#proceso"
+            - listitem [ref=e268]:
+              - link "Proyectos" [ref=e269] [cursor=pointer]:
+                - /url: "#proyectos"
+        - generic [ref=e270]:
+          - heading "Empresa" [level=5] [ref=e271]
+          - list [ref=e272]:
+            - listitem [ref=e273]:
+              - link "Contacto" [ref=e274] [cursor=pointer]:
+                - /url: "#contacto"
+            - listitem [ref=e275]:
+              - link "FAQ" [ref=e276] [cursor=pointer]:
+                - /url: "#faq"
+            - listitem [ref=e277]:
+              - link "Email" [ref=e278] [cursor=pointer]:
+                - /url: mailto:solutionsbiztek@gmail.com
+        - generic [ref=e279]:
+          - heading "Contacto" [level=5] [ref=e280]
+          - list [ref=e281]:
+            - listitem [ref=e282]:
+              - link "solutionsbiztek@gmail.com" [ref=e283] [cursor=pointer]:
+                - /url: mailto:solutionsbiztek@gmail.com
+            - listitem [ref=e284]:
+              - link "WhatsApp" [ref=e285] [cursor=pointer]:
+                - /url: https://api.whatsapp.com/send?phone=+5492345659559
+      - generic [ref=e286]:
+        - paragraph [ref=e287]: © 2026 Biztek Solutions · Todos los derechos reservados.
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - link "LinkedIn" [ref=e290] [cursor=pointer]:
+              - /url: https://linkedin.com/company/biztek-solutions
+              - img [ref=e291]
+            - link "Instagram" [ref=e293] [cursor=pointer]:
+              - /url: https://instagram.com/bizteksolutions
+              - img [ref=e294]
+          - generic [ref=e296]: Hecho en Argentina 🇦🇷

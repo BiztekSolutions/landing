@@ -1,9 +1,9 @@
 export const siteConfig = {
   company: {
     name: "Biztek Solutions",
-    slogan: "Expertos en soluciones IT",
+    tagline: "Software que mueve negocios",
     description:
-      "Desarrollo de software, integración de sistemas, automatización y optimización para empresas que buscan innovar.",
+      "Creamos software a medida para que dejes atrás las planillas, conectes tus sistemas y tu equipo recupere horas. De la idea al lanzamiento en semanas, no en meses.",
   },
   contact: {
     email: "solutionsbiztek@gmail.com",
@@ -14,176 +14,132 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/company/biztek-solutions",
     instagram: "https://instagram.com/bizteksolutions",
   },
-  ui: {
-    animations: {
-      enabled: true,
-      style: "underline", // 'grid' | 'underline' | 'orbs'
-    },
-  },
+  heroRotator: [
+    "distribuidoras",
+    "e-commerce",
+    "logística",
+    "PyMEs",
+    "tu negocio",
+  ],
   services: [
     {
-      id: 1,
-      title: "Desarrollo Web & Mobile",
+      id: "web-mobile",
+      title: "Aplicaciones web y mobile",
       description:
-        "Aplicaciones web y móviles escalables con las últimas tecnologías y mejores prácticas.",
+        "Una plataforma a medida para tu negocio, que abre rápido y crece con vos. Pensada para que la usen tus clientes y tu equipo desde la compu o el celular.",
       icon: "code",
+      size: "wide",
     },
     {
-      id: 2,
-      title: "Integración de Sistemas",
+      id: "integraciones",
+      title: "Conexión entre sistemas",
       description:
-        "Conectamos tus plataformas y herramientas para optimizar flujos de trabajo.",
+        "Hacemos que tus herramientas hablen entre sí: facturación, ventas, pagos, WhatsApp, mapas. Sin cargar lo mismo dos veces ni copiar datos a mano.",
       icon: "integration",
+      size: "square",
     },
     {
-      id: 3,
-      title: "Automatización de Procesos",
+      id: "automatizacion",
+      title: "Automatización de tareas",
       description:
-        "Reducí tiempos y errores automatizando tareas repetitivas y procesos críticos.",
+        "Sacamos del medio el trabajo manual y repetitivo: pedidos, facturas, avisos, reportes. Tu equipo dedica el tiempo a lo que de verdad importa.",
       icon: "automation",
+      size: "square",
     },
     {
-      id: 4,
-      title: "SEO & Performance",
+      id: "cloud-devops",
+      title: "Infraestructura y puesta online",
       description:
-        "Optimización técnica para mejorar velocidad, posicionamiento y experiencia de usuario.",
-      icon: "speed",
-    },
-    {
-      id: 5,
-      title: "DevOps & Cloud",
-      description:
-        "Infraestructura escalable, CI/CD y despliegues automatizados en la nube.",
+        "Tu sistema online, seguro y disponible 24/7. Nos encargamos del hosting, los respaldos, el certificado de seguridad y el monitoreo para que vos no pienses en eso.",
       icon: "cloud",
+      size: "tall",
     },
     {
-      id: 6,
-      title: "Trazabilidad & IoT",
+      id: "data-iot",
+      title: "Datos y trazabilidad",
       description:
-        "Soluciones de seguimiento en tiempo real y conectividad de dispositivos.",
+        "Tableros en vivo para ver cómo va tu negocio, seguimiento de envíos en el mapa y reportes claros para tomar mejores decisiones.",
       icon: "iot",
+      size: "wide",
     },
     {
-      id: 7,
-      title: "Mantenimiento Evolutivo",
+      id: "consultoria",
+      title: "Acompañamiento técnico",
       description:
-        "Soporte continuo y mejoras incrementales para mantener tu software actualizado.",
-      icon: "maintenance",
-    },
-    {
-      id: 8,
-      title: "Consultoría IT",
-      description:
-        "Asesoramiento estratégico para transformación digital y arquitectura de soluciones.",
+        "¿Ya tenés un sistema y no sabés si está bien? Lo revisamos, te decimos qué conviene mejorar y sumamos experiencia a tu equipo.",
       icon: "consulting",
+      size: "square",
     },
-  ],
-  technologies: [
-    { name: "React", logo: "react" },
-    { name: "Node.js", logo: "nodejs" },
-    { name: "JavaScript", logo: "javascript" },
-    { name: "HTML5", logo: "html5" },
-    { name: "CSS3", logo: "css3" },
-    { name: "Python", logo: "python" },
-    { name: "Java", logo: "java" },
-    { name: "Vercel", logo: "vercel" },
-    { name: "Astro", logo: "astro" },
-    { name: "TypeScript", logo: "typescript" },
-    { name: "Docker", logo: "docker" },
-    { name: "AWS", logo: "aws" },
   ],
   process: [
     {
-      step: 1,
-      title: "Elicitación",
+      step: "01",
+      title: "Conocer tu negocio",
       description:
-        "Entendemos tus necesidades, objetivos y contexto de negocio.",
+        "Antes de proponer nada, escuchamos. Entendemos cómo trabajás hoy, dónde se pierde tiempo y qué te haría la diferencia.",
     },
     {
-      step: 2,
-      title: "Análisis & Diseño",
-      description: "Definimos arquitectura, flujos y experiencia de usuario.",
-    },
-    {
-      step: 3,
-      title: "Implementación",
+      step: "02",
+      title: "Diseñar la solución",
       description:
-        "Desarrollo ágil con entregas incrementales y feedback continuo.",
+        "Te mostramos cómo va a verse y funcionar antes de empezar a construir. Si algo no convence, lo cambiamos ahí, sin costo.",
     },
     {
-      step: 4,
-      title: "Testeo",
+      step: "03",
+      title: "Construir paso a paso",
       description:
-        "Pruebas exhaustivas de funcionalidad, performance y seguridad.",
+        "Cada semana o dos te mostramos el avance y vos decidís el rumbo. Ves cosas reales funcionando, no diapositivas.",
     },
     {
-      step: 5,
-      title: "Despliegue",
+      step: "04",
+      title: "Probar y lanzar",
       description:
-        "Puesta en producción con estrategias de deployment seguras.",
+        "Revisamos que todo funcione bien y lo ponemos online sin interrumpir tu operación. Quedan los respaldos y el monitoreo activos desde el día uno.",
     },
     {
-      step: 6,
-      title: "Seguimiento",
-      description: "Monitoreo, soporte y mejoras continuas post-lanzamiento.",
-    },
-  ],
-  clients: [
-    {
-      id: 1,
-      name: "TechCorp",
-      description: "Plataforma de gestión empresarial",
-      logo: "https://picsum.photos/seed/client1/200/100",
-    },
-    {
-      id: 2,
-      name: "InnovateLab",
-      description: "Sistema de trazabilidad IoT",
-      logo: "https://picsum.photos/seed/client2/200/100",
-    },
-    {
-      id: 3,
-      name: "CloudFirst",
-      description: "Migración a arquitectura cloud",
-      logo: "https://picsum.photos/seed/client3/200/100",
-    },
-    {
-      id: 4,
-      name: "DataFlow",
-      description: "Integración de sistemas legacy",
-      logo: "https://picsum.photos/seed/client4/200/100",
+      step: "05",
+      title: "Acompañarte después",
+      description:
+        "No desaparecemos al entregar. Seguimos cerca para resolver dudas, mejorar lo que haga falta y crecer con tu negocio.",
     },
   ],
   projects: [
     {
-      id: 1,
-      category: "CASE STUDIES / DEVELOPMENT",
-      title: "Capikua - Events",
-      description:
-        "Capikua launched a high-performance marketplace for ticket resales and experiences, with custom features that support secure payments and real-time event listings.",
-      link: "#",
-      mockup: "/images/project-mockup-example.png",
-      technologies: ["react", "nodejs", "docker", "aws"],
-    },
-    {
-      id: 2,
-      category: "CASE STUDIES / E-COMMERCE",
-      title: "TechStore - Marketplace",
-      description:
-        "Plataforma de e-commerce escalable con integración de pagos, gestión de inventario en tiempo real y sistema de recomendaciones personalizado.",
-      link: "#",
-      mockup: "https://picsum.photos/seed/project2/1200/800",
-      technologies: ["react", "nodejs", "stripe", "vercel"],
-    },
-    {
-      id: 3,
-      category: "CASE STUDIES / IOT",
-      title: "LogisTrack - Trazabilidad",
-      description:
-        "Sistema de trazabilidad IoT para logística con seguimiento en tiempo real, alertas automáticas y dashboard de analytics avanzado.",
-      link: "#",
-      mockup: "https://picsum.photos/seed/project3/1200/800",
-      technologies: ["react", "python", "docker", "aws"],
+      id: "abastolink",
+      slug: "abastolink",
+      eyebrow: "Caso real · Plataforma entre empresas",
+      title: "AbastoLink",
+      subtitle: "Plataforma para conectar distribuidoras con sus compradores",
+      problem:
+        "Las distribuidoras manejaban todo entre mensajes de WhatsApp, planillas de Excel y llamados. No sabían qué stock tenían, dónde estaba cada pedido ni cuánto vendían. Cada jornada terminaba siendo un rompecabezas hecho a mano.",
+      solution:
+        "Armamos un solo lugar donde distribuidoras y compradores se encuentran: catálogo online, pedidos en vivo, mapa con el recorrido de cada entrega, números claros de venta y descuentos personalizados por cliente. Todo el día a día ordenado en una sola pantalla.",
+      highlights: [
+        { label: "Tiempo del pedido", value: "↓ 70%" },
+        { label: "Errores en entregas", value: "↓ 85%" },
+        { label: "Trazabilidad", value: "100%" },
+      ],
+      stack: ["React 19", "Redux Toolkit", "Node.js", "PostgreSQL", "Mapbox GL", "Recharts"],
+      image: "/images/abastolink-dashboard.png",
+      url: null,
     },
   ],
-};
+  faq: [
+    {
+      q: "¿Cuánto tarda un proyecto?",
+      a: "Una primera versión funcionando en 4 a 8 semanas. Un producto completo entre 3 y 6 meses, según el alcance. Cada una o dos semanas te mostramos el avance para que veas resultados reales.",
+    },
+    {
+      q: "¿Pueden trabajar sobre un sistema viejo que ya tengo?",
+      a: "Sí. Podemos conectar tu sistema actual con uno nuevo y migrar de a poco, sin que dejes de operar. Cambiamos lo que conviene y conservamos lo que funciona.",
+    },
+    {
+      q: "¿Pueden seguir atendiendo el sistema después del lanzamiento?",
+      a: "Sí. Ofrecemos planes mensuales de soporte con tiempos de respuesta garantizados, monitoreo activo y horas para mejoras continuas.",
+    },
+    {
+      q: "¿Trabajan con clientes fuera de Argentina?",
+      a: "Sí. Facturamos en dólares al exterior y atendemos en español e inglés. Ya trabajamos con clientes de Latinoamérica y Europa.",
+    },
+  ],
+}

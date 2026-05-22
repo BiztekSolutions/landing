@@ -1,66 +1,80 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import styled from "styled-components"
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import styled, { css } from "styled-components"
+import { motion, AnimatePresence } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
-import logo from "../images/logo.png"
+import logo from "../images/logo-inverted.png"
 
 const Nav = styled(motion.nav)`
   position: fixed;
-  top: 24px;
+  top: 18px;
   left: 0;
   right: 0;
   z-index: 1000;
   pointer-events: none;
-  background: none;
-  transition: all ${({ theme }) => theme.transitions.normal};
+  padding: 0 ${({ theme }) => theme.spacing.lg};
+  transition: top ${({ theme }) => theme.transitions.normal};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    top: 12px;
+    padding: 0 ${({ theme }) => theme.spacing.md};
+  }
 `
 
 const NavContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  border: 1.5px solid ${({ theme }) => theme.colors.border};
-  padding: 0.75rem 2.5rem 0.75rem 2rem;
   pointer-events: all;
-  min-height: 64px;
+  min-height: 60px;
+  padding: 0.5rem 0.75rem 0.5rem 1.25rem;
+  background: ${({ theme }) => theme.colors.bgGlass};
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.full};
+  box-shadow: ${({ theme }) => theme.shadows.md};
+  transition: border-color ${({ theme }) => theme.transitions.normal},
+    box-shadow ${({ theme }) => theme.transitions.normal};
+
+  ${({ $scrolled, theme }) =>
+    $scrolled &&
+    css`
+      border-color: ${theme.colors.borderHover};
+      box-shadow: ${theme.shadows.lg};
+    `}
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 0.5rem 1rem;
-    border-radius: 14px;
+    padding: 0.4rem 0.5rem 0.4rem 0.9rem;
+    min-height: 52px;
   }
 `
 
 const Logo = styled.a`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 2.125rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
-  transition: color ${({ theme }) => theme.transitions.fast};
-  border-radius: 12px;
-  background: none;
-  box-shadow: none;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  transition: opacity ${({ theme }) => theme.transitions.fast};
 
   img {
-    width: 78px;
+    height: 36px;
+    width: auto;
     object-fit: contain;
-    background: none;
-    box-shadow: none;
-    margin-right: 0.5rem;
-    transition: width 0.2s, height 0.2s;
+    display: block;
+    transition: height ${({ theme }) => theme.transitions.fast};
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-    background: none;
+    opacity: 0.85;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    img {
+      height: 30px;
+    }
   }
 `
 
@@ -78,7 +92,8 @@ const NavLinks = styled.ul`
 const NavLink = styled.a`
   color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
+  letter-spacing: -0.005em;
   transition: color ${({ theme }) => theme.transitions.fast};
   position: relative;
 
@@ -93,7 +108,7 @@ const NavLink = styled.a`
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00C2FF 0%, #0070F3 100%);
+    background: ${({ theme }) => theme.gradients.brand};
     border-radius: 1px;
     transition: width 0.32s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
@@ -110,18 +125,21 @@ const NavLink = styled.a`
 `
 
 const CTAButton = styled.a`
-  padding: 0.625rem 1.25rem;
-  background: ${({ theme }) => theme.colors.primary};
-  color: white;
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
-  font-weight: 500;
-  font-size: 0.9375rem;
-  transition: all ${({ theme }) => theme.transitions.fast};
+  padding: 0.55rem 1.1rem;
+  background: ${({ theme }) => theme.gradients.brand};
+  color: ${({ theme }) => theme.colors.bg};
+  border-radius: ${({ theme }) => theme.borderRadius.full};
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: -0.005em;
+  transition: transform ${({ theme }) => theme.transitions.fast},
+    box-shadow ${({ theme }) => theme.transitions.normal};
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.secondary};
     transform: translateY(-1px);
-    box-shadow: ${({ theme }) => theme.shadows.md};
+    box-shadow: ${({ theme }) => theme.shadows.glow},
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -143,9 +161,10 @@ const HamburgerButton = styled.button`
   }
 
   span {
-    width: 24px;
+    width: 22px;
     height: 2px;
     background-color: ${({ theme }) => theme.colors.text};
+    border-radius: 2px;
     transition: all ${({ theme }) => theme.transitions.fast};
     transform-origin: center;
 
@@ -165,14 +184,17 @@ const HamburgerButton = styled.button`
 
 const MobileMenu = styled(motion.div)`
   position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: ${({ theme }) => theme.spacing.lg};
+  top: 84px;
+  left: ${({ theme }) => theme.spacing.md};
+  right: ${({ theme }) => theme.spacing.md};
+  pointer-events: all;
+  background: ${({ theme }) => theme.colors.bgGlass};
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  padding: ${({ theme }) => theme.spacing.md};
   box-shadow: ${({ theme }) => theme.shadows.lg};
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
   display: none;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
@@ -184,45 +206,46 @@ const MobileNavLinks = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: 0.25rem;
 `
 
 const MobileNavLink = styled.a`
-  color: ${({ theme }) => theme.colors.text};
+  display: block;
+  color: ${({ theme }) => theme.colors.textSecondary};
   font-weight: 500;
-  font-size: 1.125rem;
-  padding: ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: all ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bgAlt};
-    color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.bgCardHover};
+    color: ${({ theme }) => theme.colors.text};
   }
 `
 
 const MobileCTAButton = styled.a`
   display: block;
-  margin-top: ${({ theme }) => theme.spacing.md};
-  padding: 1rem;
-  background: ${({ theme }) => theme.colors.primary};
-  color: white;
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
+  margin-top: ${({ theme }) => theme.spacing.sm};
+  padding: 0.85rem 1rem;
+  background: ${({ theme }) => theme.gradients.brand};
+  color: ${({ theme }) => theme.colors.bg};
+  border-radius: ${({ theme }) => theme.borderRadius.full};
   font-weight: 600;
   text-align: center;
+  font-size: 0.95rem;
 `
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -239,10 +262,10 @@ export function Navbar() {
   }
 
   return (
-    <Nav $scrolled={scrolled} initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
-      <NavContainer>
-        <Logo href="#hero" aria-label="Biztek Solutions - Inicio">
-          <img src={logo} alt="Logo Biztek" />
+    <Nav initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
+      <NavContainer $scrolled={scrolled}>
+        <Logo href="#hero" aria-label={`${siteConfig?.name ?? "Biztek"} - Inicio`}>
+          <img src={logo} alt="Logo" />
         </Logo>
 
         <NavLinks>
@@ -270,9 +293,9 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <MobileMenu
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
           >
             <MobileNavLinks>

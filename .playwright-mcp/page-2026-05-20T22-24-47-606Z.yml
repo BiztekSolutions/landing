@@ -1,0 +1,623 @@
+- generic [ref=e2]:
+  - navigation:
+    - generic [ref=e3]:
+      - link "Biztek - Inicio" [ref=e4] [cursor=pointer]:
+        - /url: "#hero"
+        - img "Logo" [ref=e5]
+      - button "Menú de navegación" [ref=e6] [cursor=pointer]
+  - main [ref=e10]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e20]: Biztek Solutions
+          - heading "Expertos en soluciones IT" [level=1] [ref=e21]
+          - paragraph [ref=e22]: Desarrollo de software, integración de sistemas, automatización y optimización para empresas que buscan innovar.
+          - generic [ref=e23]:
+            - link "Contactanos" [ref=e24] [cursor=pointer]:
+              - /url: "#contacto"
+              - text: Contactanos
+              - img [ref=e25]
+            - link "Ver caso real" [ref=e27] [cursor=pointer]:
+              - /url: "#proyectos"
+        - generic [ref=e28]:
+          - button "Slide anterior" [ref=e29] [cursor=pointer]:
+            - img [ref=e30]
+          - 'button "Ir a slide 1: Biztek Solutions" [ref=e32] [cursor=pointer]'
+          - 'button "Ir a slide 2: Plataformas web" [ref=e33] [cursor=pointer]'
+          - 'button "Ir a slide 3: Apps móviles" [ref=e34] [cursor=pointer]'
+          - button "Slide siguiente" [ref=e35] [cursor=pointer]:
+            - img [ref=e36]
+      - generic [ref=e41]:
+        - generic [ref=e43]:
+          - generic [ref=e44]: 22:24
+          - generic [ref=e45]:
+            - img [ref=e46]
+            - img [ref=e48]
+            - img [ref=e50]
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: HOLA, AGUSTINA
+            - strong [ref=e56]: Tu negocio · hoy
+          - generic [ref=e57]:
+            - generic [ref=e58]:
+              - generic [ref=e59]: Pedidos
+              - strong [ref=e60]: "47"
+              - generic [ref=e61]: +18% vs ayer
+            - generic [ref=e62]:
+              - generic [ref=e63]: Ingresos
+              - strong [ref=e64]: $ 1,28M
+              - generic [ref=e65]: +24%
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - strong [ref=e68]: Ventas · semana
+              - generic [ref=e69]: + 32%
+            - generic [ref=e71]:
+              - generic [ref=e72]: L
+              - generic [ref=e73]: M
+              - generic [ref=e74]: M
+              - generic [ref=e75]: J
+              - generic [ref=e76]: V
+              - generic [ref=e77]: S
+              - generic [ref=e78]: D
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - img [ref=e81]
+              - generic [ref=e83]: Inicio
+            - generic [ref=e84]:
+              - img [ref=e85]
+              - generic [ref=e87]: Stats
+            - generic [ref=e88]:
+              - img [ref=e89]
+              - generic [ref=e93]: Pedidos
+            - generic [ref=e94]:
+              - img [ref=e95]
+              - generic [ref=e98]: Perfil
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - generic [ref=e102]: 01 · Industrias
+        - heading "Construido para equipos que mueven cosas todos los días" [level=2] [ref=e103]
+      - generic [ref=e104]:
+        - generic [ref=e105]:
+          - img [ref=e106]
+          - generic [ref=e111]: Distribución
+        - generic [ref=e112]:
+          - img [ref=e113]
+          - generic [ref=e116]: Logística
+        - generic [ref=e117]:
+          - img [ref=e118]
+          - generic [ref=e122]: E-commerce
+        - generic [ref=e123]:
+          - img [ref=e124]
+          - generic [ref=e127]: PyMEs
+        - generic [ref=e128]:
+          - img [ref=e129]
+          - generic [ref=e134]: B2B
+        - generic [ref=e135]:
+          - img [ref=e136]
+          - generic [ref=e139]: Servicios profesionales
+        - generic [ref=e140]:
+          - img [ref=e141]
+          - generic [ref=e144]: Gastronomía
+    - generic [ref=e146]:
+      - generic [ref=e147]:
+        - generic [ref=e148]: 02 · Servicios
+        - heading "Qué hacemos por tu negocio" [level=2] [ref=e149]
+        - paragraph [ref=e150]: Soluciones a medida pensadas para tu resultado, no para llenar horas.
+      - generic [ref=e151]:
+        - article [ref=e152]:
+          - generic [ref=e153]:
+            - generic [ref=e154]:
+              - img [ref=e155]
+              - strong [ref=e157]: "01"
+              - generic [ref=e158]: · Plataforma a medida
+            - heading "Aplicaciones web y mobile" [level=3] [ref=e159]
+            - paragraph [ref=e160]: Una plataforma a medida para tu negocio, que abre rápido y crece con vos. Pensada para que la usen tus clientes y tu equipo desde la compu o el celular.
+          - generic [ref=e162]:
+            - generic [ref=e168]:
+              - strong [ref=e169]: tu-app
+              - text: · /dashboard
+            - generic [ref=e171]:
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - generic [ref=e174]: Ventas
+                  - generic [ref=e175]: USD 18.4K
+                  - generic [ref=e176]: + 24%
+                - generic [ref=e177]:
+                  - generic [ref=e178]: Pedidos
+                  - generic [ref=e179]: "142"
+                  - generic [ref=e180]: + 12%
+              - generic [ref=e181]:
+                - generic [ref=e182]:
+                  - generic [ref=e183]: Últimos 7 días
+                  - strong [ref=e184]: + 18%
+                - img [ref=e185]
+        - article [ref=e195]:
+          - generic [ref=e196]:
+            - generic [ref=e197]:
+              - img [ref=e198]
+              - strong [ref=e200]: "02"
+              - generic [ref=e201]: · Sistemas conectados
+            - heading "Conexión entre sistemas" [level=3] [ref=e202]
+            - paragraph [ref=e203]: "Hacemos que tus herramientas hablen entre sí: facturación, ventas, pagos, WhatsApp, mapas. Sin cargar lo mismo dos veces ni copiar datos a mano."
+          - generic [ref=e205]:
+            - generic [ref=e211]:
+              - strong [ref=e212]: flow
+              - text: · sync.live
+            - img [ref=e216]:
+              - generic [ref=e219]:
+                - generic [ref=e221]: WhatsApp
+                - generic [ref=e222]: MENSAJES
+              - generic [ref=e223]:
+                - generic [ref=e225]: Facturación
+                - generic [ref=e226]: API
+              - generic [ref=e229]: Tu sistema
+              - generic [ref=e230]: CORE
+              - generic [ref=e231]:
+                - generic [ref=e233]: Email + CRM
+                - generic [ref=e234]: WEBHOOK
+        - article [ref=e235]:
+          - generic [ref=e236]:
+            - generic [ref=e237]:
+              - img [ref=e238]
+              - strong [ref=e240]: "03"
+              - generic [ref=e241]: · Workflows automáticos
+            - heading "Automatización de tareas" [level=3] [ref=e242]
+            - paragraph [ref=e243]: "Sacamos del medio el trabajo manual y repetitivo: pedidos, facturas, avisos, reportes. Tu equipo dedica el tiempo a lo que de verdad importa."
+          - generic [ref=e245]:
+            - generic [ref=e251]:
+              - strong [ref=e252]: workflow
+              - text: · pedido-nuevo
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - generic [ref=e257]: "01"
+                - generic [ref=e258]:
+                  - strong [ref=e259]: Pedido recibido
+                  - generic [ref=e260]: TRIGGER · WhatsApp
+                - generic [ref=e261]: OK
+              - generic [ref=e262]:
+                - generic [ref=e263]: "02"
+                - generic [ref=e264]:
+                  - strong [ref=e265]: Factura emitida
+                  - generic [ref=e266]: ACTION · ERP
+                - generic [ref=e267]: OK
+              - generic [ref=e268]:
+                - generic [ref=e269]: "03"
+                - generic [ref=e270]:
+                  - strong [ref=e271]: Aviso al cliente
+                  - generic [ref=e272]: ACTION · Email
+                - generic [ref=e273]: Run
+              - generic [ref=e275]:
+                - generic [ref=e276]: "04"
+                - generic [ref=e277]:
+                  - strong [ref=e278]: Reporte diario
+                  - generic [ref=e279]: SCHEDULE · 22:00
+                - generic [ref=e280]: Cola
+        - article [ref=e281]:
+          - generic [ref=e282]:
+            - generic [ref=e283]:
+              - img [ref=e284]
+              - strong [ref=e286]: "04"
+              - generic [ref=e287]: · Infraestructura 24/7
+            - heading "Infraestructura y puesta online" [level=3] [ref=e288]
+            - paragraph [ref=e289]: Tu sistema online, seguro y disponible 24/7. Nos encargamos del hosting, los respaldos, el certificado de seguridad y el monitoreo para que vos no pienses en eso.
+          - generic [ref=e291]:
+            - generic [ref=e297]:
+              - strong [ref=e298]: status
+              - text: · uptime monitor
+            - generic [ref=e301]:
+              - generic [ref=e302]:
+                - generic [ref=e303]:
+                  - generic [ref=e304]: Uptime · 30d
+                  - generic [ref=e305]: 99.98%
+                - generic [ref=e306]:
+                  - generic [ref=e307]: Latencia P95
+                  - generic [ref=e308]: 184ms
+              - generic [ref=e309]:
+                - generic [ref=e310]:
+                  - generic [ref=e312]: api.tu-app.com
+                  - generic [ref=e313]: 12ms
+                - generic [ref=e314]:
+                  - generic [ref=e316]: db · primary
+                  - generic [ref=e317]: 8ms
+                - generic [ref=e318]:
+                  - generic [ref=e320]: cdn · global
+                  - generic [ref=e321]: 23ms
+                - generic [ref=e322]:
+                  - generic [ref=e324]: ssl · valid
+                  - generic [ref=e325]: 89d
+        - article [ref=e326]:
+          - generic [ref=e327]:
+            - generic [ref=e328]:
+              - img [ref=e329]
+              - strong [ref=e332]: "05"
+              - generic [ref=e333]: · Tableros en vivo
+            - heading "Datos y trazabilidad" [level=3] [ref=e334]
+            - paragraph [ref=e335]: Tableros en vivo para ver cómo va tu negocio, seguimiento de envíos en el mapa y reportes claros para tomar mejores decisiones.
+          - generic [ref=e337]:
+            - generic [ref=e343]:
+              - strong [ref=e344]: analytics
+              - text: · live
+            - generic [ref=e346]:
+              - generic [ref=e347]:
+                - strong [ref=e348]: USD 142K
+                - generic [ref=e349]: + 28% vs mes anterior
+              - generic [ref=e351]:
+                - generic [ref=e352]:
+                  - generic [ref=e353]: Envío PO-04821
+                  - strong [ref=e354]: EN RUTA
+                - img [ref=e355]
+        - article [ref=e362]:
+          - generic [ref=e363]:
+            - generic [ref=e364]:
+              - img [ref=e365]
+              - strong [ref=e368]: "06"
+              - generic [ref=e369]: · Auditoría técnica
+            - heading "Acompañamiento técnico" [level=3] [ref=e370]
+            - paragraph [ref=e371]: ¿Ya tenés un sistema y no sabés si está bien? Lo revisamos, te decimos qué conviene mejorar y sumamos experiencia a tu equipo.
+          - generic [ref=e373]:
+            - generic [ref=e379]:
+              - strong [ref=e380]: audit
+              - text: · revisión técnica
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - heading "Health score" [level=6] [ref=e384]
+                - generic [ref=e385]:
+                  - strong [ref=e386]: "87"
+                  - generic [ref=e387]: / 100
+              - generic [ref=e388]:
+                - generic [ref=e389]:
+                  - img [ref=e391]
+                  - generic [ref=e393]: Performance
+                  - generic [ref=e394]: 92 / 100
+                - generic [ref=e395]:
+                  - img [ref=e397]
+                  - generic [ref=e399]: Seguridad
+                  - generic [ref=e400]: A+
+                - generic [ref=e401]:
+                  - img [ref=e403]
+                  - generic [ref=e405]: Cobertura tests
+                  - generic [ref=e406]: 68%
+                - generic [ref=e407]:
+                  - img [ref=e409]
+                  - generic [ref=e412]: Deuda técnica
+                  - generic [ref=e413]: 2.4 días
+    - generic [ref=e415]:
+      - generic [ref=e416]:
+        - generic [ref=e417]: 03 · Proceso
+        - heading "De idea a producción, sin sorpresas" [level=2] [ref=e418]
+        - paragraph [ref=e419]: Sprints cortos. Demos en vivo. Vos ves avances reales cada semana.
+      - generic [ref=e421]:
+        - generic [ref=e423]:
+          - generic [ref=e424]: Paso 01
+          - heading "Conocer tu negocio" [level=4] [ref=e425]
+          - paragraph [ref=e426]: Antes de proponer nada, escuchamos. Entendemos cómo trabajás hoy, dónde se pierde tiempo y qué te haría la diferencia.
+        - generic [ref=e428]:
+          - generic [ref=e429]: Paso 02
+          - heading "Diseñar la solución" [level=4] [ref=e430]
+          - paragraph [ref=e431]: Te mostramos cómo va a verse y funcionar antes de empezar a construir. Si algo no convence, lo cambiamos ahí, sin costo.
+        - generic [ref=e433]:
+          - generic [ref=e434]: Paso 03
+          - heading "Construir paso a paso" [level=4] [ref=e435]
+          - paragraph [ref=e436]: Cada semana o dos te mostramos el avance y vos decidís el rumbo. Ves cosas reales funcionando, no diapositivas.
+        - generic [ref=e438]:
+          - generic [ref=e439]: Paso 04
+          - heading "Probar y lanzar" [level=4] [ref=e440]
+          - paragraph [ref=e441]: Revisamos que todo funcione bien y lo ponemos online sin interrumpir tu operación. Quedan los respaldos y el monitoreo activos desde el día uno.
+        - generic [ref=e443]:
+          - generic [ref=e444]: Paso 05
+          - heading "Acompañarte después" [level=4] [ref=e445]
+          - paragraph [ref=e446]: No desaparecemos al entregar. Seguimos cerca para resolver dudas, mejorar lo que haga falta y crecer con tu negocio.
+    - generic [ref=e448]:
+      - generic [ref=e449]:
+        - generic [ref=e450]: 05 · Trabajos
+        - heading "Últimos proyectos a producción" [level=2] [ref=e451]
+      - generic [ref=e452]:
+        - generic [ref=e453]: Caso real · Plataforma entre empresas
+        - heading "AbastoLink" [level=3] [ref=e454]
+        - paragraph [ref=e455]: Plataforma para conectar distribuidoras con sus compradores
+      - generic [ref=e456]:
+        - generic [ref=e461]: abastolink.com
+        - generic [ref=e462]:
+          - complementary [ref=e463]:
+            - strong [ref=e466]: AbastoLink
+            - generic [ref=e467]:
+              - generic [ref=e468]: Resumen
+              - generic [ref=e469]:
+                - img [ref=e470]
+                - generic [ref=e472]: Panel Principal
+            - generic [ref=e473]:
+              - generic [ref=e474]: Gestión
+              - generic [ref=e475]:
+                - img [ref=e476]
+                - generic [ref=e478]: Clientes
+              - generic [ref=e479]:
+                - img [ref=e480]
+                - generic [ref=e484]: Órdenes de Compra
+              - generic [ref=e485]:
+                - img [ref=e486]
+                - generic [ref=e488]: Mis Productos
+              - generic [ref=e489]:
+                - img [ref=e490]
+                - generic [ref=e493]: Descuentos
+            - generic [ref=e494]:
+              - generic [ref=e495]: Análisis
+              - generic [ref=e496]:
+                - img [ref=e497]
+                - generic [ref=e499]: Resumen de Ventas
+              - generic [ref=e500]:
+                - img [ref=e501]
+                - generic [ref=e503]: Alertas de Stock
+                - generic [ref=e504]: "2"
+            - generic [ref=e505]:
+              - generic [ref=e506]: Mi empresa
+              - generic [ref=e507]:
+                - img [ref=e508]
+                - generic [ref=e511]: Configuración
+          - generic [ref=e512]:
+            - generic [ref=e513]:
+              - heading "Panel Principal" [level=4] [ref=e514]
+              - generic [ref=e515]: Este Mes
+            - generic [ref=e518]:
+              - generic [ref=e519]:
+                - generic [ref=e520]:
+                  - generic [ref=e521]: Órdenes Totales
+                  - generic [ref=e522]: "74"
+                  - generic [ref=e523]: 8 pendientes de aprobación
+                - generic [ref=e524]:
+                  - generic [ref=e525]: Ingresos Totales
+                  - generic [ref=e526]: USD 28.4K
+                  - generic [ref=e527]: Promedio · USD 384 / orden
+                - generic [ref=e528]:
+                  - generic [ref=e529]: Pendientes de Aprobación
+                  - generic [ref=e530]: "8"
+                  - generic [ref=e531]: Requieren atención
+                - generic [ref=e532]:
+                  - generic [ref=e533]: Tasa de Finalización
+                  - generic [ref=e534]: 92%
+                  - generic [ref=e535]: 39 / 42 entregadas
+              - generic [ref=e536]:
+                - generic [ref=e537]:
+                  - generic [ref=e538]:
+                    - heading "Órdenes Recientes" [level=5] [ref=e539]
+                    - generic [ref=e540]: Últimas 5
+                  - generic [ref=e541]:
+                    - generic [ref=e542]: Número
+                    - generic [ref=e543]: Empresa Compradora
+                    - generic [ref=e544]: Fecha
+                    - generic [ref=e545]: Estado
+                    - generic [ref=e546]: Monto
+                  - generic [ref=e547]:
+                    - generic [ref=e548]: PO-04821
+                    - generic [ref=e549]: Distribuidora Norte
+                    - generic [ref=e550]: 20 may
+                    - generic [ref=e552]: entregado
+                    - generic [ref=e553]: USD 1.845
+                  - generic [ref=e554]:
+                    - generic [ref=e555]: PO-04820
+                    - generic [ref=e556]: Mercado Central S.R.L.
+                    - generic [ref=e557]: 20 may
+                    - generic [ref=e559]: enviado
+                    - generic [ref=e560]: USD 923
+                  - generic [ref=e561]:
+                    - generic [ref=e562]: PO-04819
+                    - generic [ref=e563]: Almacén Don Pedro
+                    - generic [ref=e564]: 19 may
+                    - generic [ref=e566]: aprobado
+                    - generic [ref=e567]: USD 478
+                  - generic [ref=e568]:
+                    - generic [ref=e569]: PO-04818
+                    - generic [ref=e570]: Súper Hogar
+                    - generic [ref=e571]: 19 may
+                    - generic [ref=e573]: pendiente
+                    - generic [ref=e574]: USD 2.154
+                  - generic [ref=e575]:
+                    - generic [ref=e576]: PO-04817
+                    - generic [ref=e577]: Mayorista Suárez
+                    - generic [ref=e578]: 18 may
+                    - generic [ref=e580]: entregado
+                    - generic [ref=e581]: USD 731
+                - generic [ref=e582]:
+                  - generic [ref=e583]:
+                    - heading "Resumen de Estados" [level=5] [ref=e584]
+                    - generic [ref=e585]: Este mes
+                  - generic [ref=e586]:
+                    - generic [ref=e587]:
+                      - generic [ref=e588]: Pendiente
+                      - generic [ref=e589]: "8"
+                    - generic [ref=e590]:
+                      - generic [ref=e591]: Aprobado
+                      - generic [ref=e592]: "14"
+                    - generic [ref=e593]:
+                      - generic [ref=e594]: Rechazado
+                      - generic [ref=e595]: "2"
+                    - generic [ref=e596]:
+                      - generic [ref=e597]: Enviado
+                      - generic [ref=e598]: "11"
+                    - generic [ref=e599]:
+                      - generic [ref=e600]: Entregado
+                      - generic [ref=e601]: "39"
+      - generic [ref=e602]:
+        - generic [ref=e603]:
+          - heading "El problema" [level=4] [ref=e604]
+          - paragraph [ref=e605]: Las distribuidoras manejaban todo entre mensajes de WhatsApp, planillas de Excel y llamados. No sabían qué stock tenían, dónde estaba cada pedido ni cuánto vendían. Cada jornada terminaba siendo un rompecabezas hecho a mano.
+          - heading "La solución" [level=4] [ref=e606]
+          - paragraph [ref=e607]: "Armamos un solo lugar donde distribuidoras y compradores se encuentran: catálogo online, pedidos en vivo, mapa con el recorrido de cada entrega, números claros de venta y descuentos personalizados por cliente. Todo el día a día ordenado en una sola pantalla."
+        - generic [ref=e608]:
+          - generic [ref=e609]:
+            - heading "Resultados" [level=5] [ref=e610]
+            - generic [ref=e611]:
+              - generic [ref=e612]: Tiempo del pedido
+              - generic [ref=e613]: ↓ 70%
+            - generic [ref=e614]:
+              - generic [ref=e615]: Errores en entregas
+              - generic [ref=e616]: ↓ 85%
+            - generic [ref=e617]:
+              - generic [ref=e618]: Trazabilidad
+              - generic [ref=e619]: 100%
+          - generic [ref=e620]:
+            - heading "Stack" [level=5] [ref=e621]
+            - generic [ref=e622]:
+              - generic [ref=e623]: React 19
+              - generic [ref=e625]: Redux Toolkit
+              - generic [ref=e627]: Node.js
+              - generic [ref=e629]: PostgreSQL
+              - generic [ref=e631]: Mapbox GL
+              - generic [ref=e633]: Recharts
+      - link "¿Querés algo así para tu empresa? Hablemos" [ref=e636] [cursor=pointer]:
+        - /url: "#cta"
+        - text: ¿Querés algo así para tu empresa? Hablemos
+        - img [ref=e637]
+    - generic [ref=e641]:
+      - generic [ref=e642]: 06 · Compromisos
+      - heading "Lo que prometemos por escrito" [level=2] [ref=e644]
+      - paragraph [ref=e645]: Reglas que firmamos al arrancar. Sin letra chica, sin sorpresas.
+    - generic [ref=e780]:
+      - generic [ref=e781]:
+        - generic [ref=e782]: 07 · Preguntas frecuentes
+        - heading "Preguntas que solemos recibir" [level=2] [ref=e783]
+        - paragraph [ref=e784]: Si tu duda no aparece acá, escribinos. Respondemos todo personalmente.
+      - generic [ref=e785]:
+        - generic [ref=e786]:
+          - button "¿Cuánto tarda un proyecto?" [expanded] [ref=e787] [cursor=pointer]:
+            - generic [ref=e788]: ¿Cuánto tarda un proyecto?
+          - region "¿Cuánto tarda un proyecto?" [ref=e792]:
+            - paragraph [ref=e794]: Una primera versión funcionando en 4 a 8 semanas. Un producto completo entre 3 y 6 meses, según el alcance. Cada una o dos semanas te mostramos el avance para que veas resultados reales.
+        - button "¿Pueden trabajar sobre un sistema viejo que ya tengo?" [ref=e796] [cursor=pointer]:
+          - generic [ref=e797]: ¿Pueden trabajar sobre un sistema viejo que ya tengo?
+        - button "¿Pueden seguir atendiendo el sistema después del lanzamiento?" [ref=e802] [cursor=pointer]:
+          - generic [ref=e803]: ¿Pueden seguir atendiendo el sistema después del lanzamiento?
+        - button "¿Trabajan con clientes fuera de Argentina?" [ref=e808] [cursor=pointer]:
+          - generic [ref=e809]: ¿Trabajan con clientes fuera de Argentina?
+    - generic [ref=e815]:
+      - list [ref=e817]:
+        - listitem [ref=e818]:
+          - img [ref=e819]
+          - text: Te respondemos en menos de 24hs
+        - listitem [ref=e821]:
+          - img [ref=e822]
+          - text: Sin contrato anual
+        - listitem [ref=e824]:
+          - img [ref=e825]
+          - text: Todo lo que hacemos queda tuyo desde el primer día
+      - heading "¿Querés construir algo que cambie tu negocio?" [level=2] [ref=e827]
+      - paragraph [ref=e828]: Charlemos 30 minutos. Sin compromiso y sin vueltas.
+      - generic [ref=e829]:
+        - link "Agendar una llamada" [ref=e830] [cursor=pointer]:
+          - /url: https://api.whatsapp.com/send?phone=+5492345659559&text=Hola!%20Quiero%20agendar%20una%20llamada%20con%20Biztek.
+          - img [ref=e831]
+          - text: Agendar una llamada
+          - img [ref=e833]
+        - link "Escribinos un correo" [ref=e835] [cursor=pointer]:
+          - /url: mailto:solutionsbiztek@gmail.com
+    - generic [ref=e837]:
+      - generic [ref=e838]:
+        - generic [ref=e839]: 08 · Contacto
+        - heading "Hagamos algo grande juntos" [level=2] [ref=e840]
+      - generic [ref=e841]:
+        - generic [ref=e842]:
+          - heading "Contanos en qué pensás" [level=3] [ref=e843]
+          - paragraph [ref=e844]: Decinos qué querés resolver, con qué herramientas trabajás hoy y para cuándo lo necesitás. Te respondemos en menos de 24hs.
+          - list [ref=e845]:
+            - listitem [ref=e846]:
+              - link "solutionsbiztek@gmail.com" [ref=e847] [cursor=pointer]:
+                - /url: mailto:solutionsbiztek@gmail.com
+                - img [ref=e848]
+                - text: solutionsbiztek@gmail.com
+            - listitem [ref=e851]:
+              - link "+5492345659559" [ref=e852] [cursor=pointer]:
+                - /url: https://api.whatsapp.com/send?phone=+5492345659559
+                - img [ref=e853]
+                - text: "+5492345659559"
+          - generic [ref=e856]:
+            - link "LinkedIn" [ref=e857] [cursor=pointer]:
+              - /url: https://linkedin.com/company/biztek-solutions
+              - img [ref=e858]
+            - link "Instagram" [ref=e860] [cursor=pointer]:
+              - /url: https://instagram.com/bizteksolutions
+              - img [ref=e861]
+        - generic [ref=e864]:
+          - generic [ref=e865]:
+            - generic [ref=e866]: Nombre
+            - textbox "Nombre" [ref=e867]:
+              - /placeholder: Tu nombre
+          - generic [ref=e868]:
+            - generic [ref=e869]: Email
+            - textbox "Email" [ref=e870]:
+              - /placeholder: tu@email.com
+          - generic [ref=e871]:
+            - generic [ref=e872]: Empresa
+            - textbox "Empresa" [ref=e873]:
+              - /placeholder: Tu empresa (opcional)
+          - generic [ref=e874]:
+            - generic [ref=e875]: Mensaje
+            - textbox "Mensaje" [ref=e876]:
+              - /placeholder: Contanos qué tenés en mente...
+          - button "Enviar mensaje" [ref=e877] [cursor=pointer]:
+            - text: Enviar mensaje
+            - img [ref=e878]
+  - contentinfo [ref=e880]:
+    - generic [ref=e881]:
+      - generic [ref=e882]:
+        - generic [ref=e883]:
+          - link "Biztek Solutions - Inicio" [ref=e884] [cursor=pointer]:
+            - /url: "#hero"
+            - img "Biztek Solutions logo" [ref=e885]
+          - paragraph [ref=e886]: Software que mueve negocios.
+          - generic [ref=e887]:
+            - link "solutionsbiztek@gmail.com" [ref=e888] [cursor=pointer]:
+              - /url: mailto:solutionsbiztek@gmail.com
+              - img [ref=e889]
+              - text: solutionsbiztek@gmail.com
+            - link "WhatsApp" [ref=e892] [cursor=pointer]:
+              - /url: https://api.whatsapp.com/send?phone=5492345659559
+              - img [ref=e893]
+              - text: WhatsApp
+          - generic [ref=e895]: Tomando proyectos
+        - generic [ref=e897]:
+          - heading "Navegación" [level=5] [ref=e898]
+          - list [ref=e899]:
+            - listitem [ref=e900]:
+              - link "Servicios" [ref=e901] [cursor=pointer]:
+                - /url: "#servicios"
+            - listitem [ref=e902]:
+              - link "Cómo trabajamos" [ref=e903] [cursor=pointer]:
+                - /url: "#proceso"
+            - listitem [ref=e904]:
+              - link "Clientes" [ref=e905] [cursor=pointer]:
+                - /url: "#clientes"
+            - listitem [ref=e906]:
+              - link "Contacto" [ref=e907] [cursor=pointer]:
+                - /url: "#contacto"
+        - generic [ref=e908]:
+          - heading "Servicios" [level=5] [ref=e909]
+          - list [ref=e910]:
+            - listitem [ref=e911]:
+              - link "Aplicaciones web y mobile" [ref=e912] [cursor=pointer]:
+                - /url: "#servicios"
+            - listitem [ref=e913]:
+              - link "Conexión entre sistemas" [ref=e914] [cursor=pointer]:
+                - /url: "#servicios"
+            - listitem [ref=e915]:
+              - link "Automatización de tareas" [ref=e916] [cursor=pointer]:
+                - /url: "#servicios"
+            - listitem [ref=e917]:
+              - link "Infraestructura y puesta online" [ref=e918] [cursor=pointer]:
+                - /url: "#servicios"
+            - listitem [ref=e919]:
+              - link "Datos y trazabilidad" [ref=e920] [cursor=pointer]:
+                - /url: "#servicios"
+        - generic [ref=e921]:
+          - heading "Redes" [level=5] [ref=e922]
+          - generic [ref=e923]:
+            - link "LinkedIn" [ref=e924] [cursor=pointer]:
+              - /url: https://linkedin.com/company/biztek-solutions
+              - img [ref=e925]
+            - link "Instagram" [ref=e927] [cursor=pointer]:
+              - /url: https://instagram.com/bizteksolutions
+              - img [ref=e928]
+      - generic [ref=e931]:
+        - paragraph [ref=e932]: © 2026 Biztek Solutions. Todo el código queda tuyo.
+        - generic [ref=e933]:
+          - text: Made with
+          - img [ref=e934]
+          - text: in Argentina

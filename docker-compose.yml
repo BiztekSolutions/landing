@@ -1,0 +1,17 @@
+services:
+  landing:
+    build: .
+    image: biztek-landing:latest
+    container_name: biztek-landing
+    restart: unless-stopped
+    networks:
+      - proxy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  proxy:
+    external: true
