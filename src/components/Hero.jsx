@@ -30,6 +30,11 @@ const SLIDES = [
   },
   {
     id: "build",
+    eyebrow: "Desarrollo · en vivo",
+    title: "Código real, entregado en semanas",
+    sub: "No diapositivas: cada semana te mostramos algo funcionando. De la idea al producto en el tiempo que prometemos.",
+    cta: "Empezar un proyecto",
+    ctaHref: "#contacto",
     fullVisual: true,
     visual: "laptopFull",
     durationMs: 18000,
@@ -317,7 +322,7 @@ const PanelOuter = styled(motion.div)`
     $kind === "phone" ? "380px" :
     $kind === "tablet" ? "680px" :
     $kind === "laptop" ? "780px" :
-    $kind === "laptopFull" ? "1180px" :
+    $kind === "laptopFull" ? "860px" :
     "760px"};
   margin-left: ${({ $kind }) =>
     $kind === "phone" || $kind === "laptopFull" || $kind === "tablet" ? "auto" : "0"};
@@ -1565,7 +1570,7 @@ function TabletDashboardVisual() {
 const LaptopWrap = styled.div`
   position: relative;
   width: 100%;
-  max-width: ${({ $full }) => ($full ? "1180px" : "780px")};
+  max-width: ${({ $full }) => ($full ? "860px" : "780px")};
   margin: 0 auto;
 `
 
@@ -2338,8 +2343,8 @@ const DragStage = styled(motion.div)`
   display: grid;
   grid-template-columns: ${({ $fullVisual }) =>
     $fullVisual ? "1fr" : "minmax(0, 0.9fr) minmax(0, 1.1fr)"};
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.xxl};
+  align-items: ${({ $fullVisual }) => ($fullVisual ? "center" : "center")};
+  gap: ${({ $fullVisual, theme }) => ($fullVisual ? theme.spacing.md : theme.spacing.xxl)};
   width: 100%;
   cursor: grab;
 
@@ -2360,6 +2365,41 @@ const FullDots = styled.div`
   justify-content: center;
   gap: 0.6rem;
   margin-top: ${({ theme }) => theme.spacing.lg};
+`
+
+const FullVisualTop = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  padding-bottom: ${({ theme }) => theme.spacing.lg};
+`
+
+const FullVisualHeadline = styled(motion.h1)`
+  font-family: ${({ theme }) => theme.fonts.display};
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.text};
+
+  em {
+    font-style: normal;
+    background: ${({ theme }) => theme.gradients.brand};
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+`
+
+const FullVisualSub = styled(motion.p)`
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: ${({ theme }) => theme.colors.textSecondary};
+  line-height: 1.6;
+  max-width: 520px;
 `
 
 const ArrowBtn = styled.button`
@@ -2465,6 +2505,36 @@ export function Hero() {
             setPaused(false)
           }}
         >
+        {slide.fullVisual && (
+          <AnimatePresence mode="wait" custom={direction}>
+            <FullVisualTop
+              as={motion.div}
+              key={`top-${slide.id}`}
+              custom={direction}
+              variants={textVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ x: { type: "spring", stiffness: 260, damping: 32 }, opacity: { duration: 0.35 } }}
+            >
+              <Eyebrow>
+                <Pulse />
+                <span>{slide.eyebrow}</span>
+              </Eyebrow>
+              <FullVisualHeadline>{slide.title}</FullVisualHeadline>
+              <FullVisualSub>{slide.sub}</FullVisualSub>
+              <CtaRow style={{ justifyContent: "center" }}>
+                <CtaPrimary href={slide.ctaHref || whatsappLink} target={slide.ctaHref ? undefined : "_blank"} rel={slide.ctaHref ? undefined : "noopener noreferrer"}>
+                  {slide.cta}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </CtaPrimary>
+              </CtaRow>
+            </FullVisualTop>
+          </AnimatePresence>
+        )}
+
         {!slide.fullVisual && (
           <Left>
             <AnimatePresence mode="wait" custom={direction}>
