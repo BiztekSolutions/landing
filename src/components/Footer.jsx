@@ -35,7 +35,7 @@ const Container = styled(motion.div)`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1.2fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1.2fr 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.xl};
   padding-bottom: ${({ theme }) => theme.spacing.xl};
 
@@ -296,6 +296,11 @@ const navItems = [
   { label: "Contacto", href: "#contacto" },
 ]
 
+const legalItems = [
+  { label: "Política de Privacidad", href: "/privacy-policy" },
+  { label: "Términos y Condiciones", href: "/terms" },
+]
+
 export function Footer() {
   const year = new Date().getFullYear()
   const whatsappDigits = (siteConfig.contact.whatsapp || "").replace(/[^\d]/g, "")
@@ -344,6 +349,17 @@ export function Footer() {
             <ColTitle>Navegación</ColTitle>
             <LinkList>
               {navItems.map((item) => (
+                <li key={item.href}>
+                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                </li>
+              ))}
+            </LinkList>
+          </Column>
+
+          <Column>
+            <ColTitle>Legal</ColTitle>
+            <LinkList>
+              {legalItems.map((item) => (
                 <li key={item.href}>
                   <FooterLink href={item.href}>{item.label}</FooterLink>
                 </li>

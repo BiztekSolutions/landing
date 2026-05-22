@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "styled-components"
 import { GlobalStyles } from "./styles/GlobalStyles"
 import { theme } from "./styles/theme"
@@ -12,11 +13,12 @@ import { FAQ } from "./components/FAQ"
 import { CTA } from "./components/CTA"
 import { ContactForm } from "./components/ContactForm"
 import { Footer } from "./components/Footer"
+import { PrivacyPolicy } from "./pages/PrivacyPolicy"
+import { Terms } from "./pages/Terms"
 
-function App() {
+function Home() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
+    <>
       <Navbar />
       <main>
         <Hero />
@@ -30,7 +32,22 @@ function App() {
         <ContactForm />
       </main>
       <Footer />
-    </ThemeProvider>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   )
 }
 
