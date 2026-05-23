@@ -31,7 +31,8 @@ const SLIDES = [
   {
     id: "build",
     eyebrow: "Desarrollo · en vivo",
-    title: "Código real, entregado en semanas",
+    title: "Automatizá tu negocio",
+    titleEm: "con Agentes de IA",
     sub: "No diapositivas: cada semana te mostramos algo funcionando. De la idea al producto en el tiempo que prometemos.",
     cta: "Empezar un proyecto",
     ctaHref: "#contacto",
@@ -2521,16 +2522,9 @@ export function Hero() {
                 <Pulse />
                 <span>{slide.eyebrow}</span>
               </Eyebrow>
-              <FullVisualHeadline>{slide.title}</FullVisualHeadline>
-              <FullVisualSub>{slide.sub}</FullVisualSub>
-              <CtaRow style={{ justifyContent: "center" }}>
-                <CtaPrimary href={slide.ctaHref || whatsappLink} target={slide.ctaHref ? undefined : "_blank"} rel={slide.ctaHref ? undefined : "noopener noreferrer"}>
-                  {slide.cta}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </CtaPrimary>
-              </CtaRow>
+              <FullVisualHeadline>
+                {slide.title}{slide.titleEm && <><br /><em>{slide.titleEm}</em></>}
+              </FullVisualHeadline>
             </FullVisualTop>
           </AnimatePresence>
         )}
