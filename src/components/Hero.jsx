@@ -1253,14 +1253,14 @@ function PhoneDashboardVisual() {
             <span>+18% vs ayer</span>
           </PhoneStatCard>
           <PhoneStatCard>
-            <small>Ingresos</small>
-            <strong>$ 1,28M</strong>
+            <small>Clientes</small>
+            <strong>1.284</strong>
             <span>+24%</span>
           </PhoneStatCard>
         </PhoneStatRow>
         <PhoneCardSection>
           <PhoneSectionHead>
-            <strong>Ventas · semana</strong>
+            <strong>Pedidos · semana</strong>
             <small>+ 32%</small>
           </PhoneSectionHead>
           <PhoneBars>
@@ -1302,11 +1302,11 @@ function PhoneDashboardVisual() {
 }
 
 const PHONE_LIST_ITEMS = [
-  { initials: "DN", name: "Distribuidora Norte", date: "Hace 4 min", amount: "$ 184.500" },
-  { initials: "MC", name: "Mercado Central", date: "Hace 12 min", amount: "$ 92.300" },
-  { initials: "DP", name: "Almacén Don Pedro", date: "Hace 28 min", amount: "$ 47.880" },
-  { initials: "SH", name: "Súper Hogar", date: "Hace 1 h", amount: "$ 215.420" },
-  { initials: "MS", name: "Mayorista Suárez", date: "Hace 2 h", amount: "$ 73.150" },
+  { initials: "DN", name: "Distribuidora Norte", date: "Hace 4 min", status: "Entregado" },
+  { initials: "MC", name: "Mercado Central", date: "Hace 12 min", status: "En camino" },
+  { initials: "DP", name: "Almacén Don Pedro", date: "Hace 28 min", status: "Entregado" },
+  { initials: "SH", name: "Súper Hogar", date: "Hace 1 h", status: "En preparación" },
+  { initials: "MS", name: "Mayorista Suárez", date: "Hace 2 h", status: "Entregado" },
 ]
 
 function PhoneListVisual() {
@@ -1330,7 +1330,7 @@ function PhoneListVisual() {
                 <strong>{it.name}</strong>
                 <small>{it.date}</small>
               </ListMeta>
-              <ListAmount>{it.amount}</ListAmount>
+              <ListAmount>{it.status}</ListAmount>
             </PhoneListItem>
           ))}
         </div>
@@ -1502,19 +1502,19 @@ function TabletDashboardVisual() {
               <span>+18% vs ayer</span>
             </PhoneStatCard>
             <PhoneStatCard>
-              <small>Ingresos</small>
-              <strong>$ 1,28M</strong>
+              <small>Clientes</small>
+              <strong>1.284</strong>
               <span>+24%</span>
             </PhoneStatCard>
             <PhoneStatCard>
-              <small>Stock</small>
+              <small>Entregas</small>
               <strong>8.420</strong>
               <span>+3,4%</span>
             </PhoneStatCard>
           </TabletStatRow>
           <PhoneCardSection style={{ flex: 1 }}>
             <PhoneSectionHead>
-              <strong>Ventas · semana</strong>
+              <strong>Pedidos · semana</strong>
               <small>+ 32%</small>
             </PhoneSectionHead>
             <PhoneBars>
@@ -1553,7 +1553,7 @@ function TabletDashboardVisual() {
                     <strong>{it.name}</strong>
                     <small>{it.date}</small>
                   </ListMeta>
-                  <ListAmount>{it.amount}</ListAmount>
+                  <ListAmount>{it.status}</ListAmount>
                 </PhoneListItem>
               ))}
             </div>
@@ -2052,30 +2052,30 @@ const PreviewBadge = styled.span`
 `
 
 const PRODUCTS = [
-  { name: "Yerba Mate · 1kg",        sku: "YER-001", price: "$ 1.840", stock: "Stock 142", tone: "ok",  hueA: "rgba(16,185,129,0.32)",  hueB: "rgba(6,215,255,0.28)" },
-  { name: "Aceite Girasol · 1.5L",   sku: "ACT-024", price: "$ 2.290", stock: "Stock 88",  tone: "mid", hueA: "rgba(245,158,11,0.32)",  hueB: "rgba(255,189,46,0.22)" },
-  { name: "Detergente · 750ml",      sku: "DET-112", price: "$ 980",   stock: "Stock 210", tone: "ok",  hueA: "rgba(6,215,255,0.32)",   hueB: "rgba(30,64,175,0.28)" },
-  { name: "Harina 0000 · 1kg",       sku: "HAR-007", price: "$ 720",   stock: "Stock 56",  tone: "mid", hueA: "rgba(250,250,250,0.18)", hueB: "rgba(245,158,11,0.22)" },
-  { name: "Leche Entera · 1L",       sku: "LCH-301", price: "$ 1.150", stock: "Stock 18",  tone: "low", hueA: "rgba(239,68,68,0.28)",   hueB: "rgba(255,189,46,0.18)" },
-  { name: "Pan Lactal · 540g",       sku: "PAN-040", price: "$ 1.480", stock: "Stock 74",  tone: "ok",  hueA: "rgba(245,158,11,0.28)",  hueB: "rgba(16,185,129,0.22)" },
+  { name: "Yerba Mate · 1kg",        sku: "YER-001", stock: "Disp. 142", tone: "ok",  hueA: "rgba(16,185,129,0.32)",  hueB: "rgba(6,215,255,0.28)" },
+  { name: "Aceite Girasol · 1.5L",   sku: "ACT-024", stock: "Disp. 88",  tone: "mid", hueA: "rgba(245,158,11,0.32)",  hueB: "rgba(255,189,46,0.22)" },
+  { name: "Detergente · 750ml",      sku: "DET-112", stock: "Disp. 210", tone: "ok",  hueA: "rgba(6,215,255,0.32)",   hueB: "rgba(30,64,175,0.28)" },
+  { name: "Harina 0000 · 1kg",       sku: "HAR-007", stock: "Disp. 56",  tone: "mid", hueA: "rgba(250,250,250,0.18)", hueB: "rgba(245,158,11,0.22)" },
+  { name: "Leche Entera · 1L",       sku: "LCH-301", stock: "Disp. 18",  tone: "low", hueA: "rgba(239,68,68,0.28)",   hueB: "rgba(255,189,46,0.18)" },
+  { name: "Pan Lactal · 540g",       sku: "PAN-040", stock: "Disp. 74",  tone: "ok",  hueA: "rgba(245,158,11,0.28)",  hueB: "rgba(16,185,129,0.22)" },
 ]
 
 const STATS = [
-  { label: "SKU activos",   value: "142",       delta: "+12 este mes",  tone: "up" },
-  { label: "Stock total",   value: "8.420",     delta: "+3.4%",         tone: "up" },
-  { label: "Stock crítico", value: "7",         delta: "−2 vs ayer",    tone: "down" },
-  { label: "Facturado hoy", value: "$ 184.230", delta: "+8 órdenes",    tone: "up" },
+  { label: "SKU activos",    value: "142",   delta: "+12 este mes", tone: "up" },
+  { label: "Disponibles",    value: "8.420", delta: "+3.4%",        tone: "up" },
+  { label: "Stock crítico",  value: "7",     delta: "−2 vs ayer",   tone: "down" },
+  { label: "Pedidos · hoy",  value: "184",   delta: "+8 vs ayer",   tone: "up" },
 ]
 
 const NAV = [
   { label: "Inicio",    section: "general" },
   { label: "Productos", section: "general", active: true },
-  { label: "Stock",     section: "general" },
+  { label: "Entregas",  section: "general" },
   { label: "Pedidos",   section: "general" },
-  { label: "Clientes",  section: "ventas" },
-  { label: "Facturas",  section: "ventas" },
-  { label: "Reportes",  section: "ventas" },
-  { label: "Ajustes",   section: "admin"  },
+  { label: "Clientes",  section: "gestión" },
+  { label: "Historial", section: "gestión" },
+  { label: "Reportes",  section: "gestión" },
+  { label: "Ajustes",   section: "admin"   },
 ]
 
 function PreviewView() {
@@ -2106,7 +2106,7 @@ function PreviewView() {
         </PreviewTopbar>
 
         <PreviewSidebar>
-          {["general", "ventas", "admin"].map((sec) => (
+          {["general", "gestión", "admin"].map((sec) => (
             <div key={sec}>
               <NavSection>{sec}</NavSection>
               {NAV.filter((n) => n.section === sec).map((n) => (
@@ -2149,8 +2149,7 @@ function PreviewView() {
                   <strong style={{ fontFamily: "var(--display, serif)", fontSize: "0.72rem", color: "#FAFAFA" }}>{p.name}</strong>
                   <span style={{ fontFamily: "var(--mono, monospace)", fontSize: "0.55rem", color: "rgba(255,255,255,0.4)" }}>{p.sku}</span>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontFamily: "var(--mono, monospace)", fontSize: "0.74rem", color: "#06D7FF" }}>{p.price}</span>
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
                   <PreviewBadge $tone={p.tone}>
                     <span style={{ width: 5, height: 5, background: "currentColor", borderRadius: "50%", display: "inline-block" }} />
                     {p.stock}
