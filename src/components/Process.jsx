@@ -1,20 +1,19 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
 
 const easeOut = [0.22, 1, 0.36, 1]
 
 const Section = styled.section`
   position: relative;
-  padding: ${({ theme }) => theme.spacing.xxxl} 0;
+  padding: ${({ theme }) => theme.spacing.xxl} 0;
   isolation: isolate;
   overflow-x: clip;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ theme }) => theme.spacing.xxl} 0;
+    padding: ${({ theme }) => theme.spacing.xl} 0;
   }
 `
 
@@ -44,7 +43,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.xxl};
   max-width: 760px;
 `
 
@@ -90,217 +89,141 @@ const Sub = styled(motion.p)`
   max-width: 560px;
 `
 
-const Layout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing.xl};
-  align-items: start;
+/* ── Timeline ── */
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+const Timeline = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(${({ $count }) => $count}, 1fr);
+  gap: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: ${({ theme }) => theme.spacing.lg};
+    gap: 0;
   }
 `
 
-const StickyCol = styled.div`
-  position: sticky;
-  top: 96px;
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
-  padding: 1.75rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  backdrop-filter: blur(12px);
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
+const Track = styled.div`
+  position: absolute;
+  top: 28px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: ${({ theme }) => theme.colors.border};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
 `
 
-const StickyInner = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-`
-
-const BigNumber = styled.div`
-  font-family: ${({ theme }) => theme.fonts.display};
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  background: ${({ theme }) => theme.gradients.brand};
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-`
-
-const StepTitle = styled.h3`
-  font-family: ${({ theme }) => theme.fonts.display};
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
-`
-
-const StepDesc = styled.p`
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  max-width: 460px;
-`
-
-const ProgressWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  padding-top: ${({ theme }) => theme.spacing.sm};
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
-`
-
-const ProgressLabel = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-family: ${({ theme }) => theme.fonts.mono};
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
-`
-
-const ProgressTrack = styled.div`
-  position: relative;
-  width: 100%;
-  height: 2px;
-  background: ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  overflow: hidden;
-`
-
-const ProgressFill = styled(motion.div)`
+const TrackFill = styled(motion.div)`
   position: absolute;
   inset: 0 auto 0 0;
   background: ${({ theme }) => theme.gradients.brand};
-  border-radius: inherit;
-  box-shadow: 0 0 10px ${({ theme }) => theme.colors.accentGlow};
+  box-shadow: 0 0 12px ${({ theme }) => theme.colors.accentGlow};
 `
 
-const StepsCol = styled.div`
+const Step = styled(motion.div)`
+  position: relative;
   display: flex;
   flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+  padding: 0 ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg} 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: row;
+    padding: ${({ theme }) => theme.spacing.md} 0;
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
     gap: ${({ theme }) => theme.spacing.md};
+
+    &:last-child {
+      border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    }
   }
 `
 
-const StepBlock = styled.div`
-  min-height: 38vh;
+const NodeWrap = styled.div`
   display: flex;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing.md} 0;
-  padding-left: ${({ theme }) => theme.spacing.md};
-  border-left: 2px solid
-    ${({ $active, theme }) => ($active ? theme.colors.accent : theme.colors.border)};
-  opacity: ${({ $active }) => ($active ? 1 : 0.45)};
-  transition:
-    opacity ${({ theme }) => theme.transitions.normal},
-    border-color ${({ theme }) => theme.transitions.normal};
+  gap: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    min-height: 0;
-    opacity: 1;
-    padding: ${({ theme }) => theme.spacing.lg};
-    padding-left: ${({ theme }) => theme.spacing.lg};
-    background: ${({ theme }) => theme.colors.bgCard};
-    backdrop-filter: blur(12px);
-    border: 1px solid ${({ theme }) => theme.colors.border};
-    border-left: 2px solid ${({ theme }) => theme.colors.accent};
-    border-radius: ${({ theme }) => theme.borderRadius.lg};
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 2px;
   }
 `
 
-const StepInner = styled.div`
+const Node = styled.div`
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.bgElevated};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.textTertiary};
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: border-color ${({ theme }) => theme.transitions.normal},
+    color ${({ theme }) => theme.transitions.normal},
+    box-shadow ${({ theme }) => theme.transitions.normal};
+
+  ${Step}:hover & {
+    border-color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.accent};
+    box-shadow: 0 0 20px ${({ theme }) => theme.colors.accentGlow};
+  }
+`
+
+const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.55rem;
+  padding: 1.25rem;
+  background: ${({ theme }) => theme.colors.bgCard};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  flex: 1;
+  transition: border-color ${({ theme }) => theme.transitions.normal};
+
+  ${Step}:hover & {
+    border-color: ${({ theme }) => theme.colors.borderHover};
+  }
 `
 
 const StepNum = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
-  font-size: 0.74rem;
-  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.textTertiary};
 `
 
-const SmallTitle = styled.h4`
+const StepTitle = styled.h3`
   font-family: ${({ theme }) => theme.fonts.display};
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: ${({ theme }) => theme.colors.text};
-  line-height: 1.2;
 `
 
-const SmallDesc = styled.p`
-  font-size: 0.95rem;
-  line-height: 1.55;
+const StepDesc = styled.p`
+  font-size: 0.88rem;
+  line-height: 1.65;
   color: ${({ theme }) => theme.colors.textSecondary};
-  max-width: 520px;
 `
 
 export function Process() {
   const steps = siteConfig.process
-  const [activeStep, setActiveStep] = useState(0)
-  const stepRefs = useRef([])
-
-  useEffect(() => {
-    if (typeof window === "undefined") return
-    if (!stepRefs.current.length) return
-
-    let frame = 0
-    const update = () => {
-      frame = 0
-      const viewportCenter = window.innerHeight / 2
-      let closestIdx = 0
-      let closestDist = Infinity
-      stepRefs.current.forEach((el, i) => {
-        if (!el) return
-        const rect = el.getBoundingClientRect()
-        const center = rect.top + rect.height / 2
-        const dist = Math.abs(center - viewportCenter)
-        if (dist < closestDist) {
-          closestDist = dist
-          closestIdx = i
-        }
-      })
-      setActiveStep(closestIdx)
-    }
-    const onScroll = () => {
-      if (frame) return
-      frame = window.requestAnimationFrame(update)
-    }
-
-    update()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
-    return () => {
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
-      if (frame) window.cancelAnimationFrame(frame)
-    }
-  }, [steps.length])
-
-  const current = steps[activeStep] || steps[0]
-  const progress = ((activeStep + 1) / steps.length) * 100
 
   return (
     <Section id="proceso">
@@ -333,59 +256,35 @@ export function Process() {
           </Sub>
         </Header>
 
-        <Layout>
-          <StickyCol>
-            <StickyInner>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.step}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4, ease: easeOut }}
-                  style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}
-                >
-                  <BigNumber>{current.step}</BigNumber>
-                  <StepTitle>{current.title}</StepTitle>
-                  <StepDesc>{current.description}</StepDesc>
-                </motion.div>
-              </AnimatePresence>
+        <Timeline $count={steps.length}>
+          <Track>
+            <TrackFill
+              initial={{ width: "0%" }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.2, ease: easeOut, delay: 0.3 }}
+            />
+          </Track>
 
-              <ProgressWrap>
-                <ProgressLabel>
-                  <span>
-                    {String(activeStep + 1).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
-                  </span>
-                  <span>Progreso</span>
-                </ProgressLabel>
-                <ProgressTrack>
-                  <ProgressFill
-                    initial={false}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.6, ease: easeOut }}
-                  />
-                </ProgressTrack>
-              </ProgressWrap>
-            </StickyInner>
-          </StickyCol>
-
-          <StepsCol>
-            {steps.map((s, i) => (
-              <StepBlock
-                key={s.step}
-                ref={(el) => (stepRefs.current[i] = el)}
-                data-index={i}
-                $active={i === activeStep}
-              >
-                <StepInner>
-                  <StepNum>Paso {s.step}</StepNum>
-                  <SmallTitle>{s.title}</SmallTitle>
-                  <SmallDesc>{s.description}</SmallDesc>
-                </StepInner>
-              </StepBlock>
-            ))}
-          </StepsCol>
-        </Layout>
+          {steps.map((s, i) => (
+            <Step
+              key={s.step}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, ease: easeOut, delay: 0.1 + i * 0.1 }}
+            >
+              <NodeWrap>
+                <Node>{s.step}</Node>
+              </NodeWrap>
+              <Card>
+                <StepNum>Paso {s.step}</StepNum>
+                <StepTitle>{s.title}</StepTitle>
+                <StepDesc>{s.description}</StepDesc>
+              </Card>
+            </Step>
+          ))}
+        </Timeline>
       </Container>
     </Section>
   )
