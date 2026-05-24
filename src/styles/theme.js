@@ -36,10 +36,10 @@ export const theme = {
     accent: "linear-gradient(90deg, #06D7FF, #1E40AF, #06D7FF)",
   },
   fonts: {
-    display: "'IBM Plex Serif', 'Space Grotesk', Georgia, ui-serif, serif",
-    displaySans: "'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-    body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    mono: "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+    display: "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+    displaySans: "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+    body: "'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif",
+    mono: "'Roboto Mono', ui-monospace, 'SF Mono', Menlo, monospace",
   },
   breakpoints: {
     mobile: "480px",
