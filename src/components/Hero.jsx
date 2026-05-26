@@ -31,11 +31,9 @@ const SLIDES = [
   {
     id: "build",
     eyebrow: "Desarrollo · en vivo",
-    title: "Automatizá tu negocio",
-    titleEm: "con Agentes de IA",
-    sub: "No diapositivas: cada semana te mostramos algo funcionando. De la idea al producto en el tiempo que prometemos.",
-    cta: "Empezar un proyecto",
-    ctaHref: "#contacto",
+    title: "Automatiza",
+    titleEm: "tu negocio",
+    titleSub: "con agentes inteligentes de IA",
     fullVisual: true,
     visual: "laptopFull",
     durationMs: 18000,
@@ -2374,17 +2372,17 @@ const FullVisualTop = styled.div`
   align-items: center;
   gap: 1rem;
   text-align: center;
-  max-width: 680px;
+  max-width: 880px;
   margin: 0 auto;
   padding-bottom: ${({ theme }) => theme.spacing.lg};
 `
 
 const FullVisualHeadline = styled(motion.h1)`
   font-family: ${({ theme }) => theme.fonts.display};
-  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-size: clamp(2rem, 4.4vw, 3.6rem);
   font-weight: 500;
   line-height: 1.08;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.035em;
   color: ${({ theme }) => theme.colors.text};
 
   em {
@@ -2393,6 +2391,16 @@ const FullVisualHeadline = styled(motion.h1)`
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  small {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.72em;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: ${({ theme }) => theme.colors.textSecondary};
   }
 `
 
@@ -2523,7 +2531,8 @@ export function Hero() {
                 <span>{slide.eyebrow}</span>
               </Eyebrow>
               <FullVisualHeadline>
-                {slide.title}{slide.titleEm && <><br /><em>{slide.titleEm}</em></>}
+                {slide.title}{slide.titleEm && <> <em>{slide.titleEm}</em></>}
+                {slide.titleSub && <small>{slide.titleSub}</small>}
               </FullVisualHeadline>
             </FullVisualTop>
           </AnimatePresence>
