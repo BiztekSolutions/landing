@@ -3,7 +3,10 @@
 import styled, { keyframes } from "styled-components"
 import { motion } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
-import logo from "../images/logo-inverted.png"
+import logoDark from "../images/logo-inverted.png"
+import logoLight from "../images/logo.png"
+import { useThemeToggle } from "../context/ThemeContext"
+import { useT } from "../context/LangContext"
 
 const pulse = keyframes`
   0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
@@ -13,8 +16,8 @@ const pulse = keyframes`
 
 const FooterWrap = styled.footer`
   position: relative;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.bgAlt};
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bgAlt);
   padding: ${({ theme }) => theme.spacing.xxl} 0 ${({ theme }) => theme.spacing.lg};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -86,7 +89,7 @@ const LogoLink = styled.a`
 `
 
 const Tagline = styled.p`
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   font-size: 0.95rem;
   line-height: 1.6;
 `
@@ -102,23 +105,23 @@ const ContactLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   font-size: 0.9rem;
   transition: color ${({ theme }) => theme.transitions.fast};
   width: fit-content;
 
   svg {
     flex-shrink: 0;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
     transition: color ${({ theme }) => theme.transitions.fast};
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
 
   &:hover svg {
-    color: ${({ theme }) => theme.colors.accent};
+    color: var(--color-accent);
   }
 `
 
@@ -131,14 +134,14 @@ const StatusRow = styled.div`
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const StatusDot = styled.span`
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.success};
+  background: var(--color-success);
   animation: ${pulse} 2.2s infinite;
 `
 
@@ -147,7 +150,7 @@ const ColTitle = styled.h5`
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   font-weight: 500;
 `
@@ -164,7 +167,7 @@ const LinkList = styled.ul`
 const FooterLink = styled.a`
   position: relative;
   font-size: 0.92rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   transition: color ${({ theme }) => theme.transitions.fast};
   padding: 0.1rem 0;
   width: fit-content;
@@ -177,14 +180,14 @@ const FooterLink = styled.a`
     left: 0;
     width: 100%;
     height: 1px;
-    background: ${({ theme }) => theme.colors.accent};
+    background: var(--color-accent);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform ${({ theme }) => theme.transitions.normal};
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
 
   &:hover::after {
@@ -206,15 +209,15 @@ const SocialIcon = styled.a`
   align-items: center;
   justify-content: center;
   border-radius: ${({ theme }) => theme.borderRadius.md};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.bgCard};
-  color: ${({ theme }) => theme.colors.textSecondary};
+  border: 1px solid var(--color-border);
+  background: var(--color-bgCard);
+  color: var(--color-textSecondary);
   transition: all ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.borderAccent};
-    color: ${({ theme }) => theme.colors.accent};
-    box-shadow: 0 0 14px ${({ theme }) => theme.colors.accentGlow};
+    border-color: var(--color-borderAccent);
+    color: var(--color-accent);
+    box-shadow: 0 0 14px var(--color-accentGlow);
     transform: translateY(-2px);
   }
 `
@@ -225,7 +228,7 @@ const BottomRow = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing.md};
   padding-top: ${({ theme }) => theme.spacing.md};
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  border-top: 1px solid var(--color-border);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex-direction: column;
@@ -237,7 +240,7 @@ const BottomRow = styled.div`
 const Copy = styled.p`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.76rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.02em;
   margin: 0;
 `
@@ -248,11 +251,11 @@ const BottomMeta = styled.span`
   gap: 0.5rem;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.76rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.02em;
 
   svg {
-    color: ${({ theme }) => theme.colors.accentAlt};
+    color: var(--color-accentAlt);
   }
 `
 
@@ -289,23 +292,14 @@ const HeartIcon = () => (
   </svg>
 )
 
-const navItems = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Cómo trabajamos", href: "#proceso" },
-  { label: "Clientes", href: "#clientes" },
-  { label: "Contacto", href: "#contacto" },
-]
-
-const legalItems = [
-  { label: "Política de Privacidad", href: "/privacy-policy" },
-  { label: "Términos y Condiciones", href: "/terms" },
-]
-
 export function Footer() {
+  const t = useT()
   const year = new Date().getFullYear()
+  const { isDark } = useThemeToggle()
+  const navItems = t.footer.navItems.map((label, i) => ({ label, href: `#${t.footer.navHashes[i]}` }))
+  const legalItems = t.footer.legalItems
   const whatsappDigits = (siteConfig.contact.whatsapp || "").replace(/[^\d]/g, "")
   const whatsappLink = whatsappDigits ? `https://api.whatsapp.com/send?phone=${whatsappDigits}` : null
-  const services = (siteConfig.services || []).slice(0, 5)
   const social = siteConfig.social || {}
   const hasSocial = Boolean(social.linkedin || social.instagram)
 
@@ -320,9 +314,9 @@ export function Footer() {
         <Grid>
           <BrandColumn>
             <LogoLink href="/" aria-label={`${siteConfig.company.name} - Inicio`}>
-              <img src={logo} alt={`${siteConfig.company.name} logo`} />
+              <img src={isDark ? logoDark : logoLight} alt={`${siteConfig.company.name} logo`} />
             </LogoLink>
-            <Tagline>{siteConfig.company.tagline}.</Tagline>
+            <Tagline>{t.footer.tagline}</Tagline>
 
             <ContactBlock>
               {siteConfig.contact.email && (
@@ -334,19 +328,19 @@ export function Footer() {
               {whatsappLink && (
                 <ContactLink href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <WhatsAppIcon />
-                  WhatsApp
+                  {t.footer.whatsapp}
                 </ContactLink>
               )}
             </ContactBlock>
 
             <StatusRow>
               <StatusDot />
-              Tomando proyectos
+              {t.footer.taking}
             </StatusRow>
           </BrandColumn>
 
           <Column>
-            <ColTitle>Navegación</ColTitle>
+            <ColTitle>{t.footer.navLabel}</ColTitle>
             <LinkList>
               {navItems.map((item) => (
                 <li key={item.href}>
@@ -357,7 +351,7 @@ export function Footer() {
           </Column>
 
           <Column>
-            <ColTitle>Legal</ColTitle>
+            <ColTitle>{t.footer.legalLabel}</ColTitle>
             <LinkList>
               {legalItems.map((item) => (
                 <li key={item.href}>
@@ -368,9 +362,9 @@ export function Footer() {
           </Column>
 
           <Column>
-            <ColTitle>Servicios</ColTitle>
+            <ColTitle>{t.footer.servicesLabel}</ColTitle>
             <LinkList>
-              {services.map((service) => (
+              {(t.services?.items || []).slice(0, 5).map((service) => (
                 <li key={service.id}>
                   <FooterLink href="#servicios">{service.title}</FooterLink>
                 </li>
@@ -380,7 +374,7 @@ export function Footer() {
 
           {hasSocial && (
             <Column>
-              <ColTitle>Redes</ColTitle>
+              <ColTitle>{t.footer.socialLabel}</ColTitle>
               <SocialList>
                 {social.linkedin && (
                   <SocialIcon
@@ -408,9 +402,9 @@ export function Footer() {
         </Grid>
 
         <BottomRow>
-          <Copy>© {year} {siteConfig.company.name}. Todo el código queda tuyo.</Copy>
+          <Copy>{t.footer.copyright(year, siteConfig.company.name)}</Copy>
           <BottomMeta>
-            Made with <HeartIcon /> in Argentina
+            {t.footer.madeIn} <HeartIcon />
           </BottomMeta>
         </BottomRow>
       </Container>

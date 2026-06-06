@@ -183,14 +183,14 @@ const Eyebrow = styled(motion.div)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.9rem;
-  border: 1px solid ${({ theme }) => theme.colors.accentAltGlow};
+  border: 1px solid var(--color-accentAltGlow);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   background: rgba(30, 64, 175, 0.08);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.accentAlt};
+  color: var(--color-accentAlt);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   width: fit-content;
@@ -202,11 +202,11 @@ const Title = styled(motion.h2)`
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const Highlight = styled.span`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -215,7 +215,7 @@ const Highlight = styled.span`
 
 const Sub = styled(motion.p)`
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 620px;
 `
@@ -234,7 +234,7 @@ const Grid = styled.div`
 const Panel = styled(motion.div)`
   position: relative;
   background: linear-gradient(180deg, rgba(20, 20, 28, 0.95), rgba(14, 14, 20, 0.95));
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
   box-shadow:
@@ -246,7 +246,7 @@ const Panel = styled(motion.div)`
     position: absolute;
     inset: -1px;
     border-radius: ${({ theme }) => theme.borderRadius.lg};
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     opacity: 0.08;
     filter: blur(40px);
     z-index: -1;
@@ -258,7 +258,7 @@ const PanelChrome = styled.div`
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.015);
 `
 
@@ -282,11 +282,11 @@ const PanelTitle = styled.div`
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.04em;
 
   strong {
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: var(--color-textSecondary);
     font-weight: 500;
   }
 `
@@ -295,8 +295,8 @@ const PanelStatusDot = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.success};
-  box-shadow: 0 0 10px ${({ theme }) => theme.colors.success};
+  background: var(--color-success);
+  box-shadow: 0 0 10px var(--color-success);
   animation: ${pulseDot} 1.6s ease-in-out infinite;
 `
 
@@ -327,7 +327,7 @@ const LineNumbers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: var(--color-textMuted);
   user-select: none;
 
   span { opacity: 0.6; }
@@ -341,7 +341,7 @@ const CodeBody = styled.div`
 
 const CodeLine = styled.div`
   white-space: pre;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   min-height: 1.55em;
 `
 
@@ -349,7 +349,7 @@ const Token = styled.span`
   ${({ $type, theme }) => {
     switch ($type) {
       case "kw":
-        return css`color: ${theme.colors.accent};`
+        return css`color: var(--color-accent);`
       case "fn":
         return css`color: #d6a4ff;`
       case "st":
@@ -357,14 +357,14 @@ const Token = styled.span`
       case "nm":
         return css`color: #ffb86c;`
       case "cm":
-        return css`color: ${theme.colors.textTertiary}; font-style: italic;`
+        return css`color: var(--color-textTertiary); font-style: italic;`
       case "vr":
-        return css`color: ${theme.colors.text};`
+        return css`color: var(--color-text);`
       case "op":
-        return css`color: ${theme.colors.accentAlt};`
+        return css`color: var(--color-accentAlt);`
       case "pn":
       default:
-        return css`color: ${theme.colors.textSecondary};`
+        return css`color: var(--color-textSecondary);`
     }
   }}
 `
@@ -375,8 +375,8 @@ const Cursor = styled.span`
   height: 1em;
   vertical-align: -2px;
   margin-left: 1px;
-  background: ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 6px ${({ theme }) => theme.colors.accentGlow};
+  background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accentGlow);
   animation: ${blink} 1s steps(1, end) infinite;
 `
 
@@ -386,7 +386,7 @@ const TerminalBody = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   display: flex;
   flex-direction: column;
   gap: 0.05rem;
@@ -401,17 +401,17 @@ const TerminalLine = styled(motion.div)`
   ${({ $kind, theme }) => {
     switch ($kind) {
       case "info":
-        return css`color: ${theme.colors.text};`
+        return css`color: var(--color-text);`
       case "pass":
-        return css`color: ${theme.colors.success};`
+        return css`color: var(--color-success);`
       case "run":
-        return css`color: ${theme.colors.accent};`
+        return css`color: var(--color-accent);`
       case "case":
-        return css`color: ${theme.colors.textSecondary};`
+        return css`color: var(--color-textSecondary);`
       case "summary":
-        return css`color: ${theme.colors.text}; font-weight: 500;`
+        return css`color: var(--color-text); font-weight: 500;`
       default:
-        return css`color: ${theme.colors.textSecondary};`
+        return css`color: var(--color-textSecondary);`
     }
   }}
 `
@@ -425,13 +425,13 @@ const RunBadge = styled.span`
   font-size: 0.65rem;
   letter-spacing: 0.06em;
   background: rgba(6, 215, 255, 0.12);
-  color: ${({ theme }) => theme.colors.accent};
-  border: 1px solid ${({ theme }) => theme.colors.borderAccent};
+  color: var(--color-accent);
+  border: 1px solid var(--color-borderAccent);
 `
 
 const PassBadge = styled(RunBadge)`
   background: rgba(16, 185, 129, 0.12);
-  color: ${({ theme }) => theme.colors.success};
+  color: var(--color-success);
   border-color: rgba(16, 185, 129, 0.35);
 `
 
@@ -440,7 +440,7 @@ const Spinner = styled.span`
   height: 9px;
   border-radius: 50%;
   border: 1.5px solid rgba(6, 215, 255, 0.25);
-  border-top-color: ${({ theme }) => theme.colors.accent};
+  border-top-color: var(--color-accent);
   animation: ${spin} 0.9s linear infinite;
   flex-shrink: 0;
 `
@@ -459,12 +459,12 @@ const CommitRow = styled(motion.div)`
   align-items: center;
   gap: 0.7rem;
   padding: 0.6rem 0.75rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.borderHover};
+    border-color: var(--color-borderHover);
   }
 `
 
@@ -480,13 +480,13 @@ const CommitAvatar = styled.span`
 const CommitHash = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   letter-spacing: 0.04em;
 `
 
 const CommitMsg = styled.span`
   font-size: 0.82rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -495,7 +495,7 @@ const CommitMsg = styled.span`
 const CommitTime = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.02em;
   white-space: nowrap;
 `
@@ -523,8 +523,8 @@ const Kpi = styled.div`
   flex-direction: column;
   gap: 0.2rem;
   padding: 0.7rem 0.8rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
 `
 
@@ -533,7 +533,7 @@ const KpiLabel = styled.span`
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const KpiValue = styled.span`
@@ -541,7 +541,7 @@ const KpiValue = styled.span`
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -552,8 +552,8 @@ const DeployCard = styled.div`
   flex-direction: column;
   gap: 0.55rem;
   padding: 0.85rem 0.9rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
 `
 
@@ -563,32 +563,32 @@ const DeployHead = styled.div`
   justify-content: space-between;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 
   strong {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     font-weight: 500;
   }
 `
 
 const DeployPct = styled.span`
-  color: ${({ $done, theme }) => ($done ? theme.colors.success : theme.colors.accent)};
+  color: ${({ $done, theme }) => ($done ? "var(--color-success)" : "var(--color-accent)")};
 `
 
 const DeployTrack = styled.div`
   position: relative;
   width: 100%;
   height: 4px;
-  background: ${({ theme }) => theme.colors.border};
+  background: var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   overflow: hidden;
 `
 
 const DeployFill = styled(motion.div)`
   height: 100%;
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border-radius: inherit;
-  box-shadow: 0 0 12px ${({ theme }) => theme.colors.accentGlow};
+  box-shadow: 0 0 12px var(--color-accentGlow);
 `
 
 const StatusPill = styled.div`
@@ -602,7 +602,7 @@ const StatusPill = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.7rem;
-  color: ${({ theme }) => theme.colors.success};
+  color: var(--color-success);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 `
@@ -611,8 +611,8 @@ const StatusPillDot = styled.span`
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.success};
-  box-shadow: 0 0 8px ${({ theme }) => theme.colors.success};
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
   animation: ${pulseDot} 1.6s ease-in-out infinite;
 `
 

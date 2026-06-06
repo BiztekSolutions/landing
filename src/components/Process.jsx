@@ -3,6 +3,7 @@
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
+import { useT } from "../context/LangContext"
 
 const easeOut = [0.22, 1, 0.36, 1]
 
@@ -52,14 +53,14 @@ const Eyebrow = styled(motion.div)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.9rem;
-  border: 1px solid ${({ theme }) => theme.colors.accentAltGlow};
+  border: 1px solid var(--color-accentAltGlow);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   background: rgba(30, 64, 175, 0.08);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.accentAlt};
+  color: var(--color-accentAlt);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   width: fit-content;
@@ -71,11 +72,11 @@ const Title = styled(motion.h2)`
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const Highlight = styled.span`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -84,7 +85,7 @@ const Highlight = styled.span`
 
 const Sub = styled(motion.p)`
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 560px;
 `
@@ -109,7 +110,7 @@ const Track = styled.div`
   left: 0;
   right: 0;
   height: 1px;
-  background: ${({ theme }) => theme.colors.border};
+  background: var(--color-border);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
@@ -119,8 +120,8 @@ const Track = styled.div`
 const TrackFill = styled(motion.div)`
   position: absolute;
   inset: 0 auto 0 0;
-  background: ${({ theme }) => theme.gradients.brand};
-  box-shadow: 0 0 12px ${({ theme }) => theme.colors.accentGlow};
+  background: var(--gradient-brand);
+  box-shadow: 0 0 12px var(--color-accentGlow);
 `
 
 const Step = styled(motion.div)`
@@ -133,11 +134,11 @@ const Step = styled(motion.div)`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex-direction: row;
     padding: ${({ theme }) => theme.spacing.md} 0;
-    border-top: 1px solid ${({ theme }) => theme.colors.border};
+    border-top: 1px solid var(--color-border);
     gap: ${({ theme }) => theme.spacing.md};
 
     &:last-child {
-      border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+      border-bottom: 1px solid var(--color-border);
     }
   }
 `
@@ -159,15 +160,15 @@ const Node = styled.div`
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.bgElevated};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgElevated);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.08em;
   flex-shrink: 0;
   position: relative;
@@ -177,9 +178,9 @@ const Node = styled.div`
     box-shadow ${({ theme }) => theme.transitions.normal};
 
   ${Step}:hover & {
-    border-color: ${({ theme }) => theme.colors.accent};
-    color: ${({ theme }) => theme.colors.accent};
-    box-shadow: 0 0 20px ${({ theme }) => theme.colors.accentGlow};
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    box-shadow: 0 0 20px var(--color-accentGlow);
   }
 `
 
@@ -188,14 +189,14 @@ const Card = styled.div`
   flex-direction: column;
   gap: 0.55rem;
   padding: 1.25rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   flex: 1;
   transition: border-color ${({ theme }) => theme.transitions.normal};
 
   ${Step}:hover & {
-    border-color: ${({ theme }) => theme.colors.borderHover};
+    border-color: var(--color-borderHover);
   }
 `
 
@@ -204,7 +205,7 @@ const StepNum = styled.span`
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const StepTitle = styled.h3`
@@ -213,17 +214,18 @@ const StepTitle = styled.h3`
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const StepDesc = styled.p`
   font-size: 0.88rem;
   line-height: 1.65;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 `
 
 export function Process() {
-  const steps = siteConfig.process
+  const t = useT()
+  const steps = t.process.steps
 
   return (
     <Section id="proceso">
@@ -236,7 +238,7 @@ export function Process() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: easeOut }}
           >
-            03 · Proceso
+            {t.process.eyebrow}
           </Eyebrow>
           <Title
             initial={{ opacity: 0, y: 24 }}
@@ -244,7 +246,7 @@ export function Process() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.05 }}
           >
-            De idea a <Highlight>producción</Highlight>, sin sorpresas
+            {t.process.title} <Highlight>{t.process.titleEm}</Highlight>{t.process.titleSub}
           </Title>
           <Sub
             initial={{ opacity: 0, y: 20 }}
@@ -252,7 +254,7 @@ export function Process() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.15 }}
           >
-            Sprints cortos. Demos en vivo. Vos ves avances reales cada semana.
+            {t.process.sub}
           </Sub>
         </Header>
 
@@ -278,7 +280,7 @@ export function Process() {
                 <Node>{s.step}</Node>
               </NodeWrap>
               <Card>
-                <StepNum>Paso {s.step}</StepNum>
+                <StepNum>{t.process.stepLabel} {s.step}</StepNum>
                 <StepTitle>{s.title}</StepTitle>
                 <StepDesc>{s.description}</StepDesc>
               </Card>

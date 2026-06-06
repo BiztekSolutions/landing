@@ -3,6 +3,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
+import { useT } from "../context/LangContext"
 import { siteConfig } from "../config/siteConfig"
 
 const easeOut = [0.22, 1, 0.36, 1]
@@ -54,14 +55,14 @@ const Eyebrow = styled(motion.div)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.9rem;
-  border: 1px solid ${({ theme }) => theme.colors.accentAltGlow};
+  border: 1px solid var(--color-accentAltGlow);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   background: rgba(30, 64, 175, 0.08);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.accentAlt};
+  color: var(--color-accentAlt);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   width: fit-content;
@@ -73,13 +74,13 @@ const Title = styled(motion.h2)`
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   max-width: 720px;
 `
 
 const Sub = styled(motion.p)`
   font-size: clamp(1rem, 1.4vw, 1.1rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 560px;
 `
@@ -87,11 +88,11 @@ const Sub = styled(motion.p)`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  border-top: 1px solid var(--color-border);
 `
 
 const Item = styled(motion.div)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
 `
 
 const Row = styled.button`
@@ -105,16 +106,16 @@ const Row = styled.button`
   border: none;
   text-align: left;
   cursor: pointer;
-  color: ${({ $open, theme }) => ($open ? theme.colors.text : theme.colors.textSecondary)};
+  color: ${({ $open, theme }) => ($open ? "var(--color-text)" : "var(--color-textSecondary)")};
   transition: color ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.borderAccent};
+    box-shadow: inset 0 0 0 2px var(--color-borderAccent);
     border-radius: ${({ theme }) => theme.borderRadius.sm};
   }
 
@@ -140,7 +141,7 @@ const IconWrap = styled(motion.span)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.accentAlt};
+  color: var(--color-accentAlt);
 `
 
 const IconBar = styled.span`
@@ -175,7 +176,7 @@ const AnswerInner = styled.div`
 const Answer = styled.p`
   font-size: 1rem;
   line-height: 1.65;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 0.95rem;
@@ -183,7 +184,8 @@ const Answer = styled.p`
 `
 
 export function FAQ() {
-  const items = siteConfig.faq
+  const t = useT()
+  const items = t.faq.items
   const [openIndex, setOpenIndex] = useState(0)
 
   const toggle = (i) => {
@@ -201,7 +203,7 @@ export function FAQ() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: easeOut }}
           >
-            07 · Preguntas frecuentes
+            {t.faq.eyebrow}
           </Eyebrow>
           <Title
             initial={{ opacity: 0, y: 24 }}
@@ -209,7 +211,7 @@ export function FAQ() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.05 }}
           >
-            Preguntas que solemos recibir
+            {t.faq.title}
           </Title>
           <Sub
             initial={{ opacity: 0, y: 20 }}
@@ -217,7 +219,7 @@ export function FAQ() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.15 }}
           >
-            Si tu duda no aparece acá, escribinos. Respondemos todo personalmente.
+            {t.faq.sub}
           </Sub>
         </Header>
 

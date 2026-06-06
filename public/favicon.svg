@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .el { fill: #09090B; }
+    @media (prefers-color-scheme: dark) { .el { fill: #FAFAFA; } }
+  </style>
+
+  <!--
+    Marco total: (7,7)→(57,57) = 50×50, centrado en 64×64 (7px margen)
+    Largo de brazo: 17px  |  Grosor: 5px
+    Esquina interior abajo-izq: (12, 52)
+    Esquina interior arriba-der: (52, 12)
+    B centrada en (32,32) con dominant-baseline="central"
+  -->
+
+  <!-- Escuadra abajo-izquierda -->
+  <rect class="el" x="7"  y="40" width="5"  height="17"/>
+  <rect class="el" x="7"  y="52" width="17" height="5" />
+
+  <!-- Escuadra arriba-derecha -->
+  <rect class="el" x="40" y="7"  width="17" height="5" />
+  <rect class="el" x="52" y="7"  width="5"  height="17"/>
+
+  <!-- B centrada exactamente en (32,32) -->
+  <text class="el"
+    x="32" y="32"
+    font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-size="36"
+    font-weight="900"
+    text-anchor="middle"
+    dominant-baseline="central"
+  >B</text>
+</svg>

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { HiEnvelope, HiChatBubbleLeftRight, HiCheckCircle } from "react-icons/hi2"
 import { FaLinkedin, FaInstagram } from "react-icons/fa"
 import { siteConfig } from "../config/siteConfig"
+import { useT } from "../context/LangContext"
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -59,16 +60,16 @@ const EyebrowChip = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   width: fit-content;
 `
 
@@ -77,11 +78,11 @@ const SectionTitle = styled.h2`
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 600;
   letter-spacing: -0.04em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   line-height: 1.1;
 
   span {
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -113,12 +114,12 @@ const InfoTitle = styled.h3`
   font-size: clamp(1.6rem, 2.6vw, 2rem);
   font-weight: 600;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   line-height: 1.15;
 `
 
 const InfoText = styled.p`
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   font-size: 1.05rem;
   line-height: 1.7;
   max-width: 480px;
@@ -137,16 +138,16 @@ const ContactItem = styled.li`
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     font-size: 1rem;
     transition: color ${({ theme }) => theme.transitions.fast};
 
     &:hover {
-      color: ${({ theme }) => theme.colors.accent};
+      color: var(--color-accent);
     }
 
     svg {
-      color: ${({ theme }) => theme.colors.accent};
+      color: var(--color-accent);
       flex-shrink: 0;
     }
   }
@@ -165,23 +166,23 @@ const SocialLink = styled.a`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.bgCard};
-  color: ${({ theme }) => theme.colors.textSecondary};
+  border: 1px solid var(--color-border);
+  background: var(--color-bgCard);
+  color: var(--color-textSecondary);
   transition: all ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.borderAccent};
-    color: ${({ theme }) => theme.colors.accent};
-    box-shadow: 0 0 18px ${({ theme }) => theme.colors.accentGlow};
+    border-color: var(--color-borderAccent);
+    color: var(--color-accent);
+    box-shadow: 0 0 18px var(--color-accentGlow);
     transform: translateY(-2px);
   }
 `
 
 const FormCard = styled(motion.div)`
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   padding: ${({ theme }) => theme.spacing.lg};
   backdrop-filter: blur(8px);
 `
@@ -203,13 +204,13 @@ const FieldLabel = styled.span`
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const baseInputStyles = ({ theme }) => `
-  background: ${theme.colors.bgElevated};
-  border: 1px solid ${theme.colors.border};
-  color: ${theme.colors.text};
+  background: var(--color-bgElevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   padding: 0.85rem 1rem;
   border-radius: ${theme.borderRadius.md};
   font-family: ${theme.fonts.body};
@@ -218,13 +219,13 @@ const baseInputStyles = ({ theme }) => `
   transition: border-color ${theme.transitions.fast}, box-shadow ${theme.transitions.fast};
 
   &::placeholder {
-    color: ${theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 
   &:focus {
     outline: none;
-    border-color: ${theme.colors.accent};
-    box-shadow: 0 0 0 3px ${theme.colors.accentGlow};
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accentGlow);
   }
 `
 
@@ -246,8 +247,8 @@ const SubmitBtn = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-weight: 500;
   font-size: 0.98rem;
-  color: ${({ theme }) => theme.colors.bg};
-  background: ${({ theme }) => theme.colors.accent};
+  color: var(--color-bg);
+  background: var(--color-accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -263,7 +264,7 @@ const SubmitBtn = styled.button`
     content: '';
     position: absolute;
     inset: 0;
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     opacity: 0;
     transition: opacity ${({ theme }) => theme.transitions.normal};
     z-index: -1;
@@ -271,8 +272,8 @@ const SubmitBtn = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px ${({ theme }) => theme.colors.accentGlow};
-    color: ${({ theme }) => theme.colors.text};
+    box-shadow: 0 12px 32px var(--color-accentGlow);
+    color: var(--color-text);
   }
 
   &:hover::before {
@@ -294,17 +295,17 @@ const SuccessCard = styled(motion.div)`
   gap: 0.75rem;
   padding: ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.borderRadius.md};
-  border: 1px solid ${({ theme }) => theme.colors.success};
+  border: 1px solid var(--color-success);
   background: rgba(16, 185, 129, 0.08);
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 
   svg {
-    color: ${({ theme }) => theme.colors.success};
+    color: var(--color-success);
     flex-shrink: 0;
   }
 
   strong {
-    color: ${({ theme }) => theme.colors.success};
+    color: var(--color-success);
     font-family: ${({ theme }) => theme.fonts.display};
     font-weight: 600;
     margin-right: 0.35rem;
@@ -312,6 +313,7 @@ const SuccessCard = styled(motion.div)`
 `
 
 export function ContactForm() {
+  const t = useT()
   const [sent, setSent] = useState(false)
   const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" })
 
@@ -339,9 +341,9 @@ export function ContactForm() {
       <BgAccent />
       <Container>
         <SectionHead {...fadeUp}>
-          <EyebrowChip>08 · Contacto</EyebrowChip>
+          <EyebrowChip>{t.contact.eyebrow}</EyebrowChip>
           <SectionTitle>
-            Hagamos algo <span>grande</span> juntos
+            {t.contact.title} <span>{t.contact.titleEm}</span> {t.contact.titleSub}
           </SectionTitle>
         </SectionHead>
 
@@ -352,10 +354,8 @@ export function ContactForm() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <InfoTitle>Contanos en qué pensás</InfoTitle>
-            <InfoText>
-              Decinos qué querés resolver, con qué herramientas trabajás hoy y para cuándo lo necesitás. Te respondemos en menos de 24hs.
-            </InfoText>
+            <InfoTitle>{t.contact.infoTitle}</InfoTitle>
+            <InfoText>{t.contact.infoText}</InfoText>
 
             <ContactList>
               <ContactItem>
@@ -409,56 +409,56 @@ export function ContactForm() {
                 >
                   <HiCheckCircle size={28} />
                   <div>
-                    <strong>¡Gracias!</strong>
-                    Te respondemos en menos de 24hs.
+                    <strong>{t.contact.success.title}</strong>
+                    {t.contact.success.sub}
                   </div>
                 </SuccessCard>
               ) : (
                 <Form key="form" onSubmit={handleSubmit}>
                   <Field>
-                    <FieldLabel>Nombre</FieldLabel>
+                    <FieldLabel>{t.contact.labels.name}</FieldLabel>
                     <Input
                       type="text"
                       name="name"
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Tu nombre"
+                      placeholder={t.contact.placeholders.name}
                     />
                   </Field>
                   <Field>
-                    <FieldLabel>Email</FieldLabel>
+                    <FieldLabel>{t.contact.labels.email}</FieldLabel>
                     <Input
                       type="email"
                       name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="tu@email.com"
+                      placeholder={t.contact.placeholders.email}
                     />
                   </Field>
                   <Field>
-                    <FieldLabel>Empresa</FieldLabel>
+                    <FieldLabel>{t.contact.labels.company}</FieldLabel>
                     <Input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="Tu empresa (opcional)"
+                      placeholder={t.contact.placeholders.company}
                     />
                   </Field>
                   <Field>
-                    <FieldLabel>Mensaje</FieldLabel>
+                    <FieldLabel>{t.contact.labels.message}</FieldLabel>
                     <Textarea
                       name="message"
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Contanos qué tenés en mente..."
+                      placeholder={t.contact.placeholders.message}
                     />
                   </Field>
                   <SubmitBtn type="submit">
-                    Enviar mensaje
+                    {t.contact.submit}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>

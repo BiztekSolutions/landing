@@ -12,6 +12,7 @@ import {
   HiBriefcase,
 } from "react-icons/hi2"
 import { siteConfig } from "../config/siteConfig"
+import { useT } from "../context/LangContext"
 
 const ICON_MAP = {
   code: HiCodeBracket,
@@ -70,14 +71,14 @@ const Eyebrow = styled(motion.div)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.9rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   width: fit-content;
@@ -89,11 +90,11 @@ const Title = styled(motion.h2)`
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const Highlight = styled.span`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -102,7 +103,7 @@ const Highlight = styled.span`
 
 const Sub = styled(motion.p)`
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 560px;
 `
@@ -122,9 +123,9 @@ const Row = styled(motion.article)`
   gap: ${({ theme }) => theme.spacing.xl};
   align-items: center;
   padding: 2rem;
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   backdrop-filter: blur(12px);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
   isolation: isolate;
@@ -173,8 +174,8 @@ const Row = styled(motion.article)`
   }
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.borderHover};
-    background: ${({ theme }) => theme.colors.bgCardHover};
+    border-color: var(--color-borderHover);
+    background: var(--color-bgCardHover);
   }
 
   &:hover::before { opacity: 1; }
@@ -233,25 +234,25 @@ const ServiceEyebrow = styled.div`
   align-items: center;
   gap: 0.45rem;
   padding: 0.3rem 0.7rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  background: ${({ theme }) => theme.colors.bgElevated};
+  background: var(--color-bgElevated);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   width: fit-content;
 
   strong {
-    color: ${({ theme }) => theme.colors.accent};
+    color: var(--color-accent);
     font-weight: 500;
   }
 
   svg {
     width: 12px;
     height: 12px;
-    color: ${({ theme }) => theme.colors.accent};
+    color: var(--color-accent);
   }
 `
 
@@ -261,13 +262,13 @@ const ServiceTitle = styled.h3`
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: -0.025em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const ServiceDesc = styled.p`
   font-size: 1rem;
   line-height: 1.65;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   max-width: 520px;
 `
 
@@ -277,7 +278,7 @@ const MockPanel = styled.div`
   position: relative;
   width: 100%;
   background: linear-gradient(180deg, rgba(20, 20, 28, 0.95), rgba(14, 14, 20, 0.95));
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
@@ -288,7 +289,7 @@ const MockChrome = styled.div`
   align-items: center;
   gap: 0.6rem;
   padding: 0.55rem 0.85rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.015);
 `
 
@@ -311,14 +312,14 @@ const MockTitle = styled.div`
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.04em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   strong {
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: var(--color-textSecondary);
     font-weight: 500;
   }
 `
@@ -327,8 +328,8 @@ const MockStatusDot = styled.span`
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.success};
-  box-shadow: 0 0 8px ${({ theme }) => theme.colors.success};
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
   animation: mockDotPulse 1.8s ease-in-out infinite;
 
   @keyframes mockDotPulse {
@@ -360,8 +361,8 @@ const WMGrid = styled.div`
 
 const WMStat = styled.div`
   padding: 0.55rem 0.65rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   display: flex;
   flex-direction: column;
@@ -373,7 +374,7 @@ const WMLabel = styled.span`
   font-size: 0.56rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const WMValue = styled.span`
@@ -381,20 +382,20 @@ const WMValue = styled.span`
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const WMHint = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.6rem;
-  color: ${({ theme }) => theme.colors.success};
+  color: var(--color-success);
 `
 
 const WMChartWrap = styled.div`
   margin-top: 0.65rem;
   padding: 0.55rem 0.65rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
 `
 
@@ -409,13 +410,13 @@ const WMChartHead = styled.div`
     font-size: 0.6rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 
   strong {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.62rem;
-    color: ${({ theme }) => theme.colors.accent};
+    color: var(--color-accent);
   }
 `
 
@@ -427,7 +428,7 @@ const WMPhoneFloat = styled.div`
   height: 118px;
   border-radius: 14px;
   background: linear-gradient(180deg, rgba(20, 20, 28, 0.98), rgba(10, 10, 16, 0.98));
-  border: 1px solid ${({ theme }) => theme.colors.borderHover};
+  border: 1px solid var(--color-borderHover);
   box-shadow: -10px 14px 28px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
   overflow: hidden;
   padding: 0.45rem 0.4rem 0.4rem;
@@ -455,12 +456,12 @@ const WMPhoneCard = styled.div`
     $accent
       ? "linear-gradient(90deg, rgba(6, 215, 255, 0.25), rgba(30, 64, 175, 0.25))"
       : "rgba(255, 255, 255, 0.04)"};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
 `
 
 function WebMobileMockup() {
   return (
-    <MockPanel>
+    <MockPanel data-theme="dark">
       <MockChrome>
         <MockDots>
           <span /><span /><span />
@@ -473,8 +474,8 @@ function WebMobileMockup() {
       <MockBody>
         <WMGrid>
           <WMStat>
-            <WMLabel>Ventas</WMLabel>
-            <WMValue>USD 18.4K</WMValue>
+            <WMLabel>Entregas</WMLabel>
+            <WMValue>18.4K</WMValue>
             <WMHint>+ 24%</WMHint>
           </WMStat>
           <WMStat>
@@ -607,7 +608,7 @@ function IntegrationNode({ x, y, label, sub, accent }) {
 
 function IntegrationsMockup() {
   return (
-    <MockPanel>
+    <MockPanel data-theme="dark">
       <MockChrome>
         <MockDots>
           <span /><span /><span />
@@ -700,7 +701,7 @@ const AutoRow = styled.div`
     $active ? "rgba(6, 215, 255, 0.06)" : "rgba(255, 255, 255, 0.02)"};
   border: 1px solid
     ${({ $active, theme }) =>
-      $active ? theme.colors.borderAccent : theme.colors.border};
+      $active ? "var(--color-borderAccent)" : "var(--color-border)"};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   position: relative;
   overflow: hidden;
@@ -711,7 +712,7 @@ const AutoStep = styled.span`
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: ${({ $active, theme }) =>
-    $active ? theme.colors.accent : theme.colors.textMuted};
+    $active ? "var(--color-accent)" : "var(--color-textMuted)"};
   min-width: 22px;
 `
 
@@ -725,14 +726,14 @@ const AutoLabel = styled.div`
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 0.82rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     letter-spacing: -0.01em;
   }
 
   span {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.6rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
     letter-spacing: 0.04em;
   }
 `
@@ -755,10 +756,10 @@ const AutoBadge = styled.span`
       : "rgba(255, 255, 255, 0.04)"};
   color: ${({ $variant, theme }) =>
     $variant === "done"
-      ? theme.colors.success
+      ? "var(--color-success)"
       : $variant === "running"
-      ? theme.colors.accent
-      : theme.colors.textTertiary};
+      ? "var(--color-accent)"
+      : "var(--color-textTertiary)"};
   border: 1px solid
     ${({ $variant }) =>
       $variant === "done"
@@ -772,8 +773,8 @@ const AutoRunDot = styled(motion.span)`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 6px ${({ theme }) => theme.colors.accentGlow};
+  background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accentGlow);
 `
 
 function AutomatizacionMockup() {
@@ -785,7 +786,7 @@ function AutomatizacionMockup() {
   ]
 
   return (
-    <MockPanel>
+    <MockPanel data-theme="dark">
       <MockChrome>
         <MockDots>
           <span /><span /><span />
@@ -839,8 +840,8 @@ const CloudTop = styled.div`
 
 const CloudTile = styled.div`
   padding: 0.55rem 0.65rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   display: flex;
   flex-direction: column;
@@ -852,7 +853,7 @@ const CloudLabel = styled.span`
   font-size: 0.56rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const CloudValue = styled.span`
@@ -860,7 +861,7 @@ const CloudValue = styled.span`
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const CloudChecks = styled.div`
@@ -879,15 +880,15 @@ const CloudCheck = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 
   span.label {
     flex: 1;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
 
   span.time {
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
     font-size: 0.6rem;
   }
 `
@@ -896,8 +897,8 @@ const CloudPulse = styled(motion.span)`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.success};
-  box-shadow: 0 0 8px ${({ theme }) => theme.colors.success};
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
   flex-shrink: 0;
 `
 
@@ -909,7 +910,7 @@ function CloudMockup() {
     { name: "ssl · valid", time: "89d" },
   ]
   return (
-    <MockPanel>
+    <MockPanel data-theme="dark">
       <MockChrome>
         <MockDots>
           <span /><span /><span />
@@ -967,13 +968,13 @@ const DataMeta = styled.div`
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
 
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.66rem;
-    color: ${({ theme }) => theme.colors.success};
+    color: var(--color-success);
   }
 `
 
@@ -987,7 +988,7 @@ const DataBars = styled.div`
 `
 
 const DataBar = styled(motion.div)`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border-radius: 2px 2px 0 0;
   width: 100%;
   box-shadow: 0 0 8px rgba(6, 215, 255, 0.18);
@@ -998,7 +999,7 @@ const DataMap = styled.div`
   position: relative;
   padding: 0.6rem 0.7rem;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
 `
 
@@ -1013,20 +1014,20 @@ const DataMapLabel = styled.div`
     font-size: 0.6rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 
   strong {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.62rem;
-    color: ${({ theme }) => theme.colors.accent};
+    color: var(--color-accent);
   }
 `
 
 function DataMockup() {
   const bars = [0.42, 0.58, 0.5, 0.68, 0.62, 0.78, 0.72, 0.88, 0.82, 0.95]
   return (
-    <MockPanel>
+    <MockPanel data-theme="dark">
       <MockChrome>
         <MockDots>
           <span /><span /><span />
@@ -1038,7 +1039,7 @@ function DataMockup() {
       </MockChrome>
       <MockBody>
         <DataMeta>
-          <strong>USD 142K</strong>
+          <strong>142K pedidos</strong>
           <small>+ 28% vs mes anterior</small>
         </DataMeta>
         <DataBars>
@@ -1119,7 +1120,7 @@ const ConsultHeader = styled.div`
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 0.92rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     margin: 0;
     letter-spacing: -0.01em;
   }
@@ -1138,13 +1139,13 @@ const ConsultScore = styled.div`
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.85rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.success};
+    color: var(--color-success);
   }
 
   span {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.6rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 `
 
@@ -1160,11 +1161,11 @@ const ConsultRow = styled(motion.div)`
   gap: 0.55rem;
   padding: 0.45rem 0.6rem;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 `
 
 const ConsultIcon = styled.span`
@@ -1189,10 +1190,10 @@ const ConsultIcon = styled.span`
         : "rgba(6, 215, 255, 0.45)"};
   color: ${({ $tone, theme }) =>
     $tone === "ok"
-      ? theme.colors.success
+      ? "var(--color-success)"
       : $tone === "warn"
       ? "#FFBD2E"
-      : theme.colors.accent};
+      : "var(--color-accent)"};
   flex-shrink: 0;
 
   svg { width: 8px; height: 8px; }
@@ -1200,7 +1201,7 @@ const ConsultIcon = styled.span`
 
 const ConsultLabel = styled.span`
   flex: 1;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 0.78rem;
 `
@@ -1211,10 +1212,10 @@ const ConsultMetric = styled.span`
   letter-spacing: 0.06em;
   color: ${({ $tone, theme }) =>
     $tone === "ok"
-      ? theme.colors.success
+      ? "var(--color-success)"
       : $tone === "warn"
       ? "#FFBD2E"
-      : theme.colors.accent};
+      : "var(--color-accent)"};
 `
 
 function ConsultoriaMockup() {
@@ -1225,7 +1226,7 @@ function ConsultoriaMockup() {
     { label: "Deuda técnica", metric: "2.4 días", tone: "info" },
   ]
   return (
-    <MockPanel>
+    <MockPanel data-theme="dark">
       <MockChrome>
         <MockDots>
           <span /><span /><span />
@@ -1342,6 +1343,7 @@ function ServiceRow({ service, index }) {
 }
 
 export function Services() {
+  const t = useT()
   return (
     <Section id="servicios">
       <SectionBg />
@@ -1353,7 +1355,7 @@ export function Services() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: easeOut }}
           >
-            02 · Servicios
+            {t.services.eyebrow}
           </Eyebrow>
           <Title
             initial={{ opacity: 0, y: 24 }}
@@ -1361,7 +1363,7 @@ export function Services() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.05 }}
           >
-            Qué hacemos por <Highlight>tu negocio</Highlight>
+            {t.services.title} <Highlight>{t.services.titleEm}</Highlight>
           </Title>
           <Sub
             initial={{ opacity: 0, y: 20 }}
@@ -1369,12 +1371,12 @@ export function Services() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.15 }}
           >
-            Soluciones a medida pensadas para tu resultado, no para llenar horas.
+            {t.services.sub}
           </Sub>
         </Header>
 
         <List>
-          {siteConfig.services.map((service, i) => (
+          {t.services.items.map((service, i) => (
             <ServiceRow key={service.id} service={service} index={i} />
           ))}
         </List>

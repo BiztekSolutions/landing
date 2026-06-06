@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer"
 import { siteConfig } from "../config/siteConfig"
 
 const Wrap = styled.div`
-  background: ${({ theme }) => theme.colors.bg};
+  background: var(--color-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@ const Eyebrow = styled.p`
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `
 
@@ -35,17 +35,17 @@ const Title = styled.h1`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   margin-bottom: ${({ theme }) => theme.spacing.xs};
   line-height: 1.2;
 `
 
 const LastUpdated = styled.p`
   font-size: 0.88rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   margin-bottom: ${({ theme }) => theme.spacing.xl};
   padding-bottom: ${({ theme }) => theme.spacing.xl};
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  border-top: 1px solid var(--color-border);
 `
 
 const Section = styled.section`
@@ -56,14 +56,14 @@ const H2 = styled.h2`
   font-family: ${({ theme }) => theme.fonts.displaySans};
   font-size: 1.15rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   margin-top: ${({ theme }) => theme.spacing.xl};
 `
 
 const P = styled.p`
   font-size: 0.97rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.75;
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `
@@ -74,14 +74,14 @@ const UL = styled.ul`
 
   li {
     font-size: 0.97rem;
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: var(--color-textSecondary);
     line-height: 1.75;
     margin-bottom: 0.35rem;
   }
 `
 
 const ContactLink = styled.a`
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   text-decoration: none;
 
   &:hover {

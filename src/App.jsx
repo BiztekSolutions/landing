@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { ThemeProvider } from "styled-components"
-import { GlobalStyles } from "./styles/GlobalStyles"
-import { theme } from "./styles/theme"
+import { ThemeToggleProvider } from "./context/ThemeContext"
+import { LangProvider } from "./context/LangContext"
 import { Navbar } from "./components/Navbar"
 import { Hero } from "./components/Hero"
 import { Clients } from "./components/Clients"
@@ -38,16 +37,17 @@ function Home() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
+    <LangProvider>
+    <ThemeToggleProvider>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
         </Routes>
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeToggleProvider>
+    </LangProvider>
   )
 }
 

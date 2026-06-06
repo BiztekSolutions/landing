@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import styled from "styled-components"
 import { motion, useInView } from "framer-motion"
+import { useT } from "../context/LangContext"
 
 const easeOut = [0.22, 1, 0.36, 1]
 
@@ -14,13 +15,6 @@ const TILE_INTERVAL_MS = 55
 const TILE_DURATION_MIN = 600
 const TILE_DURATION_MAX = 1100
 const TILE_STAGGER_MS = 38
-
-const STATS = [
-  { label: "RESPUESTA INICIAL", value: "24 HS" },
-  { label: "PRIMER MVP", value: "4 8 SEM" },
-  { label: "DEMO POR SPRINT", value: "1 2 SEM" },
-  { label: "CODIGO TUYO", value: "100%" },
-]
 
 const Section = styled.section`
   position: relative;
@@ -70,14 +64,14 @@ const Eyebrow = styled(motion.div)`
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.9rem;
-  border: 1px solid ${({ theme }) => theme.colors.borderAccent};
+  border: 1px solid var(--color-borderAccent);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   background: rgba(6, 215, 255, 0.06);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   width: fit-content;
@@ -87,8 +81,8 @@ const Dot = styled.span`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 10px ${({ theme }) => theme.colors.accentGlow};
+  background: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accentGlow);
 `
 
 const Title = styled(motion.h2)`
@@ -97,11 +91,11 @@ const Title = styled(motion.h2)`
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const Highlight = styled.span`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -110,7 +104,7 @@ const Highlight = styled.span`
 
 const Sub = styled(motion.p)`
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 560px;
 `
@@ -129,7 +123,7 @@ const Board = styled(motion.div)`
   width: fit-content;
   max-width: 100%;
   background: #050509;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   box-shadow:
     0 24px 80px rgba(0, 0, 0, 0.6),
@@ -176,7 +170,7 @@ const Tile = styled.div`
   font-size: var(--tile-font);
   font-weight: 600;
   line-height: 1;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   background: ${({ $empty }) => ($empty ? "#020205" : "#0A0A0E")};
   border: 1px solid ${({ $empty }) => ($empty ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.05)")};
   border-radius: 3px;
@@ -300,6 +294,8 @@ function FlipRow({ label, value, rowDelay, active }) {
 }
 
 export function Stats() {
+  const t = useT()
+  const STATS = t.stats.items
   const boardRef = useRef(null)
   const inView = useInView(boardRef, { once: true, margin: "-80px" })
 
@@ -315,7 +311,7 @@ export function Stats() {
             transition={{ duration: 0.5, ease: easeOut }}
           >
             <Dot />
-            06 · Compromisos
+            {t.stats.eyebrow}
           </Eyebrow>
           <Title
             initial={{ opacity: 0, y: 24 }}
@@ -323,7 +319,7 @@ export function Stats() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.05 }}
           >
-            Lo que prometemos <Highlight>por escrito</Highlight>
+            {t.stats.title} <Highlight>{t.stats.titleEm}</Highlight>
           </Title>
           <Sub
             initial={{ opacity: 0, y: 20 }}
@@ -331,7 +327,7 @@ export function Stats() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut, delay: 0.15 }}
           >
-            Reglas que firmamos al arrancar. Sin letra chica, sin sorpresas.
+            {t.stats.sub}
           </Sub>
         </Header>
 

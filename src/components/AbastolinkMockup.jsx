@@ -40,9 +40,9 @@ const Shell = styled.div`
   grid-template-columns: 220px 1fr;
   width: 100%;
   height: 560px;
-  background: ${({ theme }) => theme.colors.bg};
+  background: var(--color-bg);
   font-family: ${({ theme }) => theme.fonts.body};
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 64px 1fr;
@@ -55,7 +55,7 @@ const Sidebar = styled.aside`
   flex-direction: column;
   gap: 0.15rem;
   padding: 1rem 0.65rem;
-  border-right: 1px solid ${({ theme }) => theme.colors.border};
+  border-right: 1px solid var(--color-border);
   background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
   overflow: hidden;
 `
@@ -70,15 +70,15 @@ const Brand = styled.div`
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 
   span {
     display: inline-flex;
     width: 20px;
     height: 20px;
     border-radius: 6px;
-    background: ${({ theme }) => theme.gradients.brand};
-    box-shadow: 0 0 12px ${({ theme }) => theme.colors.accentGlow};
+    background: var(--gradient-brand);
+    box-shadow: 0 0 12px var(--color-accentGlow);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -91,7 +91,7 @@ const GroupLabel = styled.div`
   font-size: 0.62rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: var(--color-textMuted);
   padding: 0.6rem 0.55rem 0.25rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -106,7 +106,7 @@ const NavItem = styled.div`
   padding: 0.4rem 0.55rem;
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-size: 0.82rem;
-  color: ${({ $active, theme }) => ($active ? theme.colors.text : theme.colors.textTertiary)};
+  color: ${({ $active, theme }) => ($active ? "var(--color-text)" : "var(--color-textTertiary)")};
   background: ${({ $active }) => ($active ? "rgba(6, 215, 255, 0.08)" : "transparent")};
   position: relative;
   transition: all 0.25s;
@@ -122,7 +122,7 @@ const NavItem = styled.div`
         bottom: 25%;
         width: 2px;
         border-radius: 2px;
-        background: ${theme.colors.accent};
+        background: var(--color-accent);
       }
     `}
 
@@ -130,7 +130,7 @@ const NavItem = styled.div`
     width: 15px;
     height: 15px;
     flex-shrink: 0;
-    color: ${({ $active, theme }) => ($active ? theme.colors.accent : theme.colors.textMuted)};
+    color: ${({ $active, theme }) => ($active ? "var(--color-accent)" : "var(--color-textMuted)")};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -150,7 +150,7 @@ const NavBadge = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.65rem;
   background: rgba(239, 68, 68, 0.15);
-  color: ${({ theme }) => theme.colors.error};
+  color: var(--color-error);
   border: 1px solid rgba(239, 68, 68, 0.35);
   border-radius: ${({ theme }) => theme.borderRadius.full};
 
@@ -194,7 +194,7 @@ const TopBar = styled.div`
   align-items: center;
   gap: 1rem;
   padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.01);
 `
 
@@ -203,7 +203,7 @@ const TopTitle = styled.h4`
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   margin: 0;
 `
 
@@ -213,12 +213,12 @@ const PeriodPill = styled.span`
   gap: 0.4rem;
   margin-left: 0.6rem;
   padding: 0.25rem 0.6rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.7rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
@@ -233,8 +233,8 @@ const Avatar = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.gradients.brand};
-  box-shadow: 0 0 12px ${({ theme }) => theme.colors.accentGlow};
+  background: var(--gradient-brand);
+  box-shadow: 0 0 12px var(--color-accentGlow);
 `
 
 const ViewArea = styled.div`
@@ -267,8 +267,8 @@ const StatRow = styled.div`
 
 const StatCard = styled(motion.div)`
   padding: 0.7rem 0.85rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   display: flex;
   flex-direction: column;
@@ -280,7 +280,7 @@ const StatLabel = styled.span`
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const StatValue = styled.span`
@@ -288,13 +288,13 @@ const StatValue = styled.span`
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const StatHint = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const Split = styled.div`
@@ -312,8 +312,8 @@ const Split = styled.div`
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   overflow: hidden;
 `
@@ -323,13 +323,13 @@ const CardHead = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.7rem 0.9rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
 
   h5 {
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 0.92rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     letter-spacing: -0.01em;
     margin: 0;
   }
@@ -337,7 +337,7 @@ const CardHead = styled.div`
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.65rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
@@ -347,13 +347,13 @@ const TableHead = styled.div`
   display: grid;
   grid-template-columns: 0.85fr 1.4fr 0.9fr 0.9fr 0.6fr;
   padding: 0.5rem 0.9rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.02);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 
   span:last-child { text-align: right; }
 `
@@ -363,27 +363,27 @@ const TableRow = styled(motion.div)`
   grid-template-columns: 0.85fr 1.4fr 0.9fr 0.9fr 0.6fr;
   align-items: center;
   padding: 0.55rem 0.9rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.8rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 
   &:last-child { border-bottom: none; }
 `
 
 const OrderNum = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const Money = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const DateCell = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.74rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const StatusBadge = styled.span`
@@ -406,11 +406,11 @@ const StatusBadge = styled.span`
       : "rgba(255,189,46,0.12)"};
   color: ${({ $variant, theme }) =>
     $variant === "entregado"
-      ? theme.colors.success
+      ? "var(--color-success)"
       : $variant === "enviado"
-      ? theme.colors.accent
+      ? "var(--color-accent)"
       : $variant === "aprobado"
-      ? theme.colors.accentAlt
+      ? "var(--color-accentAlt)"
       : "#FFBD2E"};
   border: 1px solid ${({ $variant }) =>
     $variant === "entregado"
@@ -430,8 +430,8 @@ const SmallBtn = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
   background: rgba(6,215,255,0.08);
-  color: ${({ theme }) => theme.colors.accent};
-  border: 1px solid ${({ theme }) => theme.colors.borderAccent};
+  color: var(--color-accent);
+  border: 1px solid var(--color-borderAccent);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   margin-left: auto;
 `
@@ -447,9 +447,9 @@ const StatusItem = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.55rem 0.9rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.85rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 
   &:last-child { border-bottom: none; }
 `
@@ -458,7 +458,7 @@ const StatusCount = styled.span`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.1rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const ChartCard = styled(Card)`
@@ -484,13 +484,13 @@ const ChartMeta = styled.div`
     font-size: 1.35rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
 
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.7rem;
-    color: ${({ theme }) => theme.colors.success};
+    color: var(--color-success);
   }
 `
 
@@ -504,7 +504,7 @@ const Bars = styled.div`
 `
 
 const Bar = styled(motion.div)`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border-radius: 3px 3px 0 0;
   width: 100%;
   box-shadow: 0 0 12px rgba(6,215,255,0.2);
@@ -518,7 +518,7 @@ const BarLabels = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.6rem;
   text-align: center;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const AlertSummary = styled.div`
@@ -532,7 +532,7 @@ const AlertTile = styled.div`
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.85rem 0.95rem;
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   border: 1px solid ${({ $tone }) =>
     $tone === "crit" ? "rgba(239, 68, 68, 0.35)" : "rgba(255, 189, 46, 0.3)"};
   border-radius: ${({ theme }) => theme.borderRadius.md};
@@ -543,12 +543,12 @@ const AlertCount = styled.span`
   font-size: 1.7rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: ${({ $tone, theme }) => ($tone === "crit" ? theme.colors.error : "#FFBD2E")};
+  color: ${({ $tone, theme }) => ($tone === "crit" ? "var(--color-error)" : "#FFBD2E")};
 `
 
 const AlertLabel = styled.span`
   font-size: 0.78rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 `
 
 const AlertRow = styled(motion.div)`
@@ -556,15 +556,15 @@ const AlertRow = styled(motion.div)`
   grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr;
   align-items: center;
   padding: 0.55rem 0.9rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.8rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 
   &:last-child { border-bottom: none; }
 `
 
 const ProductCell = styled.span`
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -574,16 +574,16 @@ const SeverityDot = styled.span`
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: ${({ $tone, theme }) => ($tone === "crit" ? theme.colors.error : "#FFBD2E")};
+  background: ${({ $tone, theme }) => ($tone === "crit" ? "var(--color-error)" : "#FFBD2E")};
   box-shadow: 0 0 8px ${({ $tone }) => ($tone === "crit" ? "rgba(239,68,68,0.5)" : "rgba(255,189,46,0.5)")};
 `
 
 const recentOrders = [
-  { num: "PO-04821", buyer: "Distribuidora Norte", date: "20 may", status: "entregado", amount: "USD 1.845" },
-  { num: "PO-04820", buyer: "Mercado Central S.R.L.", date: "20 may", status: "enviado", amount: "USD 923" },
-  { num: "PO-04819", buyer: "Almacén Don Pedro", date: "19 may", status: "aprobado", amount: "USD 478" },
-  { num: "PO-04818", buyer: "Súper Hogar", date: "19 may", status: "pendiente", amount: "USD 2.154" },
-  { num: "PO-04817", buyer: "Mayorista Suárez", date: "18 may", status: "entregado", amount: "USD 731" },
+  { num: "PO-04821", buyer: "Distribuidora Norte", date: "20 may", status: "entregado", amount: "142 blt." },
+  { num: "PO-04820", buyer: "Mercado Central S.R.L.", date: "20 may", status: "enviado", amount: "89 blt." },
+  { num: "PO-04819", buyer: "Almacén Don Pedro", date: "19 may", status: "aprobado", amount: "46 blt." },
+  { num: "PO-04818", buyer: "Súper Hogar", date: "19 may", status: "pendiente", amount: "186 blt." },
+  { num: "PO-04817", buyer: "Mayorista Suárez", date: "18 may", status: "entregado", amount: "68 blt." },
 ]
 
 const statusCounters = [
@@ -606,7 +606,7 @@ function DashboardView() {
       <StatRow $cols={4}>
         {[
           { label: "Órdenes Totales", value: "74", hint: "8 pendientes de aprobación" },
-          { label: "Ingresos Totales", value: "USD 28.4K", hint: "Promedio · USD 384 / orden" },
+          { label: "Bultos Totales", value: "531 blt.", hint: "Promedio · 12 blt. / orden" },
           { label: "Pendientes de Aprobación", value: "8", hint: "Requieren atención" },
           { label: "Tasa de Finalización", value: "92%", hint: "39 / 42 entregadas" },
         ].map((s, i) => (
@@ -634,7 +634,7 @@ function DashboardView() {
             <span>Empresa Compradora</span>
             <span>Fecha</span>
             <span>Estado</span>
-            <span>Monto</span>
+            <span>Bultos</span>
           </TableHead>
           {recentOrders.map((o, i) => (
             <TableRow
@@ -685,11 +685,11 @@ function VentasView() {
     >
       <StatRow $cols={6}>
         {[
-          { label: "Ingresos Totales", value: "USD 284K" },
-          { label: "Órdenes Totales", value: "742" },
-          { label: "Unidades Vendidas", value: "12.840" },
+          { label: "Pedidos Totales", value: "742" },
+          { label: "Bultos Despachados", value: "12.840" },
+          { label: "Unidades Activas", value: "12.840" },
           { label: "Clientes Activos", value: "168" },
-          { label: "Valor Prom. / Orden", value: "USD 384" },
+          { label: "Blt. Prom. / Orden", value: "17 blt." },
           { label: "Productos Activos", value: "320" },
         ].map((s, i) => (
           <StatCard
@@ -706,12 +706,12 @@ function VentasView() {
 
       <ChartCard>
         <CardHead>
-          <h5>Tendencia de Ingresos</h5>
-          <small>Este año · USD</small>
+          <h5>Tendencia de Entregas</h5>
+          <small>Este año · bultos</small>
         </CardHead>
         <ChartBody>
           <ChartMeta>
-            <strong>USD 284K</strong>
+            <strong>12.840 blt.</strong>
             <small>+ 32% vs año anterior</small>
           </ChartMeta>
           <Bars>

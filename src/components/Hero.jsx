@@ -4,49 +4,17 @@ import { useEffect, useRef, useState } from "react"
 import styled, { keyframes, css } from "styled-components"
 import { motion, AnimatePresence } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
+import { useT } from "../context/LangContext"
 
 const easeOut = [0.22, 1, 0.36, 1]
 
 /* ---------- SLIDES DATA ---------- */
 
-const SLIDES = [
-  {
-    id: "intro",
-    eyebrow: "Biztek Solutions",
-    title: "Expertos en soluciones IT",
-    sub: "Desarrollo de software, integración de sistemas, automatización y optimización para empresas que buscan innovar.",
-    cta: "Contactanos",
-    ctaHref: "#contacto",
-    visual: "tabletDashboard",
-  },
-  {
-    id: "web",
-    eyebrow: "Plataformas web",
-    title: "Software web a medida que escala con tu negocio",
-    sub: "Construimos plataformas, dashboards y sistemas internos que reemplazan planillas, conectan herramientas y le dan a tu equipo el panel de control que se merece.",
-    cta: "Empezar un proyecto",
-    ctaHref: "#contacto",
-    visual: "laptop",
-  },
-  {
-    id: "build",
-    eyebrow: "Desarrollo · en vivo",
-    title: "Automatiza",
-    titleEm: "tu negocio",
-    titleSub: "con agentes inteligentes de IA",
-    fullVisual: true,
-    visual: "laptopFull",
-    durationMs: 18000,
-  },
-  {
-    id: "mobile",
-    eyebrow: "Apps móviles",
-    title: "Apps que tu equipo y tus clientes usan todos los días",
-    sub: "Diseñamos y construimos apps nativas e híbridas con foco en velocidad, simplicidad y experiencia real de uso. Para celulares, tablets y todo lo que haga falta.",
-    cta: "Hablemos de tu app",
-    ctaHref: "#contacto",
-    visual: "phoneList",
-  },
+const SLIDE_META = [
+  { id: "intro", ctaHref: "#contacto", visual: "tabletDashboard" },
+  { id: "web", ctaHref: "#contacto", visual: "laptop" },
+  { id: "build", fullVisual: true, visual: "laptopFull", durationMs: 18000 },
+  { id: "mobile", ctaHref: "#contacto", visual: "phoneList" },
 ]
 
 const SLIDE_DURATION_MS = 7000
@@ -83,7 +51,7 @@ const HeroSection = styled.section`
 const MeshBg = styled.div`
   position: absolute;
   inset: 0;
-  background: ${({ theme }) => theme.gradients.radial};
+  background: var(--gradient-radial);
   z-index: -2;
 `
 
@@ -118,8 +86,8 @@ const GridOverlay = styled.div`
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
@@ -174,16 +142,16 @@ const Eyebrow = styled(motion.div)`
   align-items: center;
   gap: 0.6rem;
   padding: 0.4rem 0.9rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   backdrop-filter: blur(12px);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   width: fit-content;
 `
 
@@ -191,12 +159,12 @@ const Pulse = styled.span`
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.accentGlow};
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0 var(--color-accentGlow);
   animation: pulse 2s infinite;
 
   @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.accentGlow}; }
+    0% { box-shadow: 0 0 0 0 var(--color-accentGlow); }
     70% { box-shadow: 0 0 0 10px transparent; }
     100% { box-shadow: 0 0 0 0 transparent; }
   }
@@ -208,12 +176,12 @@ const Headline = styled(motion.h1)`
   font-weight: 500;
   line-height: 1.02;
   letter-spacing: -0.04em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   max-width: 560px;
 
   em {
     font-style: normal;
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -222,7 +190,7 @@ const Headline = styled(motion.h1)`
 
 const Sub = styled(motion.p)`
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.55;
   max-width: 560px;
 `
@@ -241,8 +209,8 @@ const CtaPrimary = styled.a`
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-weight: 500;
   font-size: 0.95rem;
-  color: ${({ theme }) => theme.colors.bg};
-  background: ${({ theme }) => theme.gradients.brand};
+  color: var(--color-bg);
+  background: var(--gradient-brand);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -250,7 +218,7 @@ const CtaPrimary = styled.a`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px ${({ theme }) => theme.colors.accentGlow};
+    box-shadow: 0 12px 32px var(--color-accentGlow);
   }
 
   svg {
@@ -266,9 +234,9 @@ const CtaSecondary = styled.a`
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-weight: 500;
   font-size: 0.95rem;
-  color: ${({ theme }) => theme.colors.text};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.bgCard};
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  background: var(--color-bgCard);
   backdrop-filter: blur(8px);
   display: inline-flex;
   align-items: center;
@@ -276,8 +244,8 @@ const CtaSecondary = styled.a`
   transition: all ${({ theme }) => theme.transitions.normal};
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.borderHover};
-    background: ${({ theme }) => theme.colors.bgCardHover};
+    border-color: var(--color-borderHover);
+    background: var(--color-bgCardHover);
   }
 `
 
@@ -298,7 +266,7 @@ const Dot = styled.button`
   border: 0;
   padding: 0;
   background: ${({ $active, theme }) =>
-    $active ? "rgba(255,255,255,0.18)" : theme.colors.border};
+    $active ? "rgba(255,255,255,0.18)" : "var(--color-border)"};
   cursor: pointer;
   overflow: hidden;
   transition: width ${({ theme }) => theme.transitions.normal},
@@ -308,7 +276,7 @@ const Dot = styled.button`
 const DotFill = styled(motion.span)`
   position: absolute;
   inset: 0 auto 0 0;
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border-radius: inherit;
 `
 
@@ -334,7 +302,7 @@ const PanelOuter = styled(motion.div)`
     inset: -1px;
     border-radius: ${({ $kind, theme }) =>
       $kind === "phone" ? "44px" : $kind === "tablet" ? "28px" : theme.borderRadius.lg};
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     opacity: ${({ $kind }) => ($kind === "laptop" || $kind === "laptopFull" ? "0.15" : "0.22")};
     filter: blur(60px);
     z-index: -1;
@@ -343,7 +311,7 @@ const PanelOuter = styled(motion.div)`
 
 const Panel = styled.div`
   background: linear-gradient(180deg, rgba(20, 20, 28, 0.95), rgba(14, 14, 20, 0.95));
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
@@ -354,7 +322,7 @@ const PanelChrome = styled.div`
   align-items: center;
   gap: 0.7rem;
   padding: 0.7rem 1rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.015);
 `
 
@@ -376,11 +344,11 @@ const PanelTitle = styled.div`
   text-align: center;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.74rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   letter-spacing: 0.04em;
 
   strong {
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: var(--color-textSecondary);
     font-weight: 500;
   }
 `
@@ -389,8 +357,8 @@ const StatusDot = styled.span`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.success};
-  box-shadow: 0 0 10px ${({ theme }) => theme.colors.success};
+  background: var(--color-success);
+  box-shadow: 0 0 10px var(--color-success);
   animation: pulseDot 1.6s ease-in-out infinite;
 
   @keyframes pulseDot {
@@ -474,7 +442,7 @@ const Editor = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 `
 
 const EditorTab = styled.div`
@@ -483,10 +451,10 @@ const EditorTab = styled.div`
   gap: 0.5rem;
   padding: 0.3rem 0.7rem;
   background: rgba(6, 215, 255, 0.08);
-  border: 1px solid ${({ theme }) => theme.colors.borderAccent};
+  border: 1px solid var(--color-borderAccent);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   font-size: 0.7rem;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   width: fit-content;
 `
 
@@ -502,7 +470,7 @@ const CodeArea = styled.div`
 const Gutter = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: var(--color-textMuted);
   font-size: 0.72rem;
   text-align: right;
   user-select: none;
@@ -519,7 +487,7 @@ const Caret = styled.span`
   display: inline-block;
   width: 7px;
   height: 1em;
-  background: ${({ theme }) => theme.colors.accent};
+  background: var(--color-accent);
   vertical-align: text-bottom;
   margin-left: 1px;
   animation: blink 1s steps(2) infinite;
@@ -529,9 +497,9 @@ const Caret = styled.span`
   }
 `
 
-const Kw = styled.span`color: ${({ theme }) => theme.colors.accent};`
+const Kw = styled.span`color: var(--color-accent);`
 const Str = styled.span`color: #6BCF7F;`
-const Ident = styled.span`color: ${({ theme }) => theme.colors.accentAlt};`
+const Ident = styled.span`color: var(--color-accentAlt);`
 
 function colorizeToken(token, keywords) {
   if (!token) return token
@@ -653,12 +621,12 @@ const Node = styled(motion.div)`
   align-items: center;
   gap: 0.55rem;
   padding: 0.55rem 0.75rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const NodeIcon = styled.span`
@@ -667,7 +635,7 @@ const NodeIcon = styled.span`
   border-radius: 6px;
   background: ${({ $tone, theme }) =>
     $tone === "ok" ? "rgba(16,185,129,0.15)" : "rgba(6,215,255,0.12)"};
-  color: ${({ $tone, theme }) => ($tone === "ok" ? theme.colors.success : theme.colors.accent)};
+  color: ${({ $tone, theme }) => ($tone === "ok" ? "var(--color-success)" : "var(--color-accent)")};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -685,8 +653,8 @@ const Hub = styled.div`
   justify-content: center;
   gap: 0.45rem;
   padding: 1rem 0.6rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.borderAccent};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-borderAccent);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
 
   &::before {
@@ -694,7 +662,7 @@ const Hub = styled.div`
     position: absolute;
     inset: -1px;
     border-radius: ${({ theme }) => theme.borderRadius.lg};
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     opacity: 0.25;
     filter: blur(20px);
     z-index: -1;
@@ -703,14 +671,14 @@ const Hub = styled.div`
   strong {
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 0.95rem;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     letter-spacing: -0.01em;
   }
 
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.68rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 `
 
@@ -724,7 +692,7 @@ const HubBadge = styled.span`
   border: 1px solid rgba(16, 185, 129, 0.3);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.65rem;
-  color: ${({ theme }) => theme.colors.success};
+  color: var(--color-success);
 
   span {
     width: 6px;
@@ -848,8 +816,8 @@ const DashGrid = styled.div`
 
 const KpiCard = styled.div`
   padding: 0.7rem 0.85rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   display: flex;
   flex-direction: column;
@@ -861,7 +829,7 @@ const KpiLabel = styled.span`
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const KpiValue = styled.span`
@@ -869,20 +837,20 @@ const KpiValue = styled.span`
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const KpiHint = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
-  color: ${({ theme }) => theme.colors.success};
+  color: var(--color-success);
 `
 
 const ChartCard = styled.div`
   grid-column: span 2;
   padding: 0.7rem 0.85rem;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   display: flex;
   flex-direction: column;
@@ -894,8 +862,8 @@ const ChartHeader = styled.div`
   justify-content: space-between;
   align-items: baseline;
 
-  span { font-family: ${({ theme }) => theme.fonts.mono}; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: ${({ theme }) => theme.colors.textTertiary}; }
-  strong { font-family: ${({ theme }) => theme.fonts.display}; font-weight: 600; color: ${({ theme }) => theme.colors.text}; }
+  span { font-family: ${({ theme }) => theme.fonts.mono}; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-textTertiary); }
+  strong { font-family: ${({ theme }) => theme.fonts.display}; font-weight: 600; color: var(--color-text); }
 `
 
 const Bars = styled.div`
@@ -907,7 +875,7 @@ const Bars = styled.div`
 `
 
 const Bar = styled(motion.div)`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border-radius: 3px 3px 0 0;
   box-shadow: 0 0 10px rgba(6,215,255,0.2);
 `
@@ -929,7 +897,7 @@ function useTicker(initial, step, intervalMs, max) {
 function LiveDashboardVisual() {
   const heights = [0.42, 0.55, 0.48, 0.62, 0.58, 0.71, 0.65, 0.78, 0.72, 0.88, 0.82, 0.95]
   const orders = useTicker(742, 1, 1400, 999)
-  const revenue = useTicker(284, 1, 2000, 999)
+  const deliveries = useTicker(284, 1, 2000, 999)
   return (
     <DashGrid>
       <KpiCard>
@@ -938,15 +906,15 @@ function LiveDashboardVisual() {
         <KpiHint>+ en vivo</KpiHint>
       </KpiCard>
       <KpiCard>
-        <KpiLabel>Ingresos · mes</KpiLabel>
-        <KpiValue>USD {revenue}K</KpiValue>
-        <KpiHint>+ 32%</KpiHint>
+        <KpiLabel>Entregas · mes</KpiLabel>
+        <KpiValue>{deliveries}K</KpiValue>
+        <KpiHint>+ 18%</KpiHint>
       </KpiCard>
       <ChartCard>
         <ChartHeader>
           <div>
             <span>Tendencia 12 meses</span>
-            <div><strong>USD 284K</strong></div>
+            <div><strong>{deliveries}K entregas</strong></div>
           </div>
           <HubBadge><span />producción · ok</HubBadge>
         </ChartHeader>
@@ -1015,7 +983,7 @@ const PhoneStatusBar = styled.div`
   padding: 12px 24px 6px;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   font-weight: 600;
   z-index: 3;
 
@@ -1050,12 +1018,12 @@ const PhoneHeader = styled.div`
     font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
   strong {
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 1.05rem;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     letter-spacing: -0.02em;
   }
 `
@@ -1067,8 +1035,8 @@ const PhoneStatRow = styled.div`
 `
 
 const PhoneStatCard = styled.div`
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 0.5rem 0.6rem;
   display: flex;
@@ -1080,26 +1048,26 @@ const PhoneStatCard = styled.div`
     font-size: 0.55rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
   strong {
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 1.05rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     letter-spacing: -0.02em;
   }
   span {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.6rem;
-    color: ${({ theme }) => theme.colors.success};
+    color: var(--color-success);
   }
 `
 
 const PhoneCardSection = styled.div`
   flex: 1;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 0.7rem 0.7rem 0.5rem;
   display: flex;
@@ -1116,12 +1084,12 @@ const PhoneSectionHead = styled.div`
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 0.78rem;
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.58rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 `
 
@@ -1134,7 +1102,7 @@ const PhoneBars = styled.div`
 `
 
 const PhoneBar = styled(motion.div)`
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border-radius: 3px 3px 0 0;
 `
 
@@ -1145,18 +1113,18 @@ const PhoneListItem = styled(motion.div)`
   padding: 0.5rem 0.55rem;
   background: rgba(255,255,255,0.02);
   border-radius: ${({ theme }) => theme.borderRadius.sm};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
 `
 
 const ListAvatar = styled.span`
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.bg};
+  color: var(--color-bg);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.65rem;
   font-weight: 600;
@@ -1172,7 +1140,7 @@ const ListMeta = styled.div`
 
   strong {
     font-size: 0.74rem;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1181,14 +1149,14 @@ const ListMeta = styled.div`
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.58rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 `
 
 const ListAmount = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.72rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   font-weight: 500;
 `
 
@@ -1197,7 +1165,7 @@ const PhoneNav = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
   padding: 0.5rem 0 0.7rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  border-top: 1px solid var(--color-border);
   margin-top: 0.4rem;
 `
 
@@ -1206,7 +1174,7 @@ const PhoneNavBtn = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  color: ${({ $active, theme }) => ($active ? theme.colors.accent : theme.colors.textTertiary)};
+  color: ${({ $active, theme }) => ($active ? "var(--color-accent)" : "var(--color-textTertiary)")};
 
   svg { width: 16px; height: 16px; }
   span {
@@ -1219,7 +1187,7 @@ function PhoneShellWith({ children }) {
   const now = new Date()
   const time = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`
   return (
-    <PhoneFrame>
+    <PhoneFrame data-theme="dark">
       <PhoneScreen>
         <PhoneNotch />
         <PhoneStatusBar>
@@ -1406,7 +1374,7 @@ const TabletStatusBar = styled.div`
   padding: 10px 22px 6px;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.62rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   font-weight: 600;
 
   span:first-child { letter-spacing: 0.05em; }
@@ -1436,8 +1404,8 @@ const TabletStatRow = styled.div`
 
 const TabletListCard = styled.div`
   flex: 1;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 0.6rem 0.7rem;
   display: flex;
@@ -1454,12 +1422,12 @@ const TabletListHead = styled.div`
   strong {
     font-family: ${({ theme }) => theme.fonts.display};
     font-size: 0.85rem;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
   }
   small {
     font-family: ${({ theme }) => theme.fonts.mono};
     font-size: 0.55rem;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: var(--color-textTertiary);
   }
 `
 
@@ -1467,7 +1435,7 @@ function TabletShellWith({ children }) {
   const now = new Date()
   const time = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`
   return (
-    <TabletFrame>
+    <TabletFrame data-theme="dark">
       <TabletCam />
       <TabletScreen>
         <TabletStatusBar>
@@ -1627,7 +1595,7 @@ const ScreenChrome = styled.div`
   align-items: center;
   gap: 0.6rem;
   padding: 0.45rem 0.7rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.015);
 `
 
@@ -1652,13 +1620,13 @@ const Tab = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.66rem;
   letter-spacing: 0.04em;
-  color: ${({ $active, theme }) => ($active ? theme.colors.text : theme.colors.textTertiary)};
+  color: ${({ $active, theme }) => ($active ? "var(--color-text)" : "var(--color-textTertiary)")};
   background: ${({ $active }) => ($active ? "rgba(255,255,255,0.06)" : "transparent")};
   border-radius: 4px 4px 0 0;
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  border-bottom: ${({ $active, theme }) => ($active ? `2px solid ${theme.colors.accent}` : "2px solid transparent")};
+  border-bottom: ${({ $active, theme }) => ($active ? `2px solid var(--color-accent)` : "2px solid transparent")};
 `
 
 const TabDot = styled.span`
@@ -1666,7 +1634,7 @@ const TabDot = styled.span`
   height: 6px;
   border-radius: 50%;
   background: ${({ $tone, theme }) =>
-    $tone === "red" ? theme.colors.error : $tone === "yellow" ? "#FFBD2E" : theme.colors.accent};
+    $tone === "red" ? "var(--color-error)" : $tone === "yellow" ? "#FFBD2E" : "var(--color-accent)"};
 `
 
 const ScreenBody = styled.div`
@@ -1719,7 +1687,7 @@ const EditorLines = styled.div`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: ${({ $full }) => ($full ? "0.82rem" : "0.72rem")};
   line-height: 1.55;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   white-space: pre;
   display: grid;
   grid-template-columns: ${({ $full }) => ($full ? "32px 1fr" : "26px 1fr")};
@@ -1727,7 +1695,7 @@ const EditorLines = styled.div`
 `
 
 const LineNum = styled.div`
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: var(--color-textMuted);
   text-align: right;
   user-select: none;
 `
@@ -1832,7 +1800,7 @@ const PreviewShell = styled.div`
   grid-template-columns: 130px 1fr;
   grid-template-rows: 38px 1fr;
   gap: 0;
-  background: ${({ theme }) => theme.colors.bg};
+  background: var(--color-bg);
 `
 
 const PreviewTopbar = styled.div`
@@ -1841,7 +1809,7 @@ const PreviewTopbar = styled.div`
   align-items: center;
   gap: 0.8rem;
   padding: 0 0.9rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.02);
 `
 
@@ -1852,14 +1820,14 @@ const PreviewBrand = styled.div`
   font-family: ${({ theme }) => theme.fonts.display};
   font-weight: 600;
   font-size: 0.8rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 
   &::before {
     content: '';
     width: 14px;
     height: 14px;
     border-radius: 4px;
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
   }
 `
 
@@ -1869,10 +1837,10 @@ const PreviewCrumbs = styled.div`
   gap: 0.35rem;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.65rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 
   strong {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--color-text);
     font-weight: 500;
   }
 `
@@ -1884,11 +1852,11 @@ const PreviewSearch = styled.div`
   gap: 0.35rem;
   padding: 0.25rem 0.55rem;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.62rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   width: 180px;
 `
 
@@ -1896,12 +1864,12 @@ const PreviewAvatar = styled.div`
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   border: 1px solid rgba(255, 255, 255, 0.12);
 `
 
 const PreviewSidebar = styled.div`
-  border-right: 1px solid ${({ theme }) => theme.colors.border};
+  border-right: 1px solid var(--color-border);
   padding: 0.7rem 0.5rem;
   display: flex;
   flex-direction: column;
@@ -1917,16 +1885,16 @@ const NavItem = styled.div`
   border-radius: 6px;
   font-family: ${({ theme }) => theme.fonts.body || theme.fonts.display};
   font-size: 0.7rem;
-  color: ${({ $active, theme }) => ($active ? theme.colors.text : theme.colors.textTertiary)};
+  color: ${({ $active, theme }) => ($active ? "var(--color-text)" : "var(--color-textTertiary)")};
   background: ${({ $active }) => ($active ? "rgba(255,255,255,0.06)" : "transparent")};
-  border-left: 2px solid ${({ $active, theme }) => ($active ? theme.colors.accent : "transparent")};
+  border-left: 2px solid ${({ $active, theme }) => ($active ? "var(--color-accent)" : "transparent")};
 
   &::before {
     content: '';
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: ${({ $active, theme }) => ($active ? theme.colors.accent : theme.colors.border)};
+    background: ${({ $active, theme }) => ($active ? "var(--color-accent)" : "var(--color-border)")};
   }
 `
 
@@ -1937,7 +1905,7 @@ const NavSection = styled.div`
   font-size: 0.55rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: var(--color-textMuted);
 `
 
 const PreviewMain = styled.div`
@@ -1958,14 +1926,14 @@ const PreviewTitle = styled.strong`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   letter-spacing: -0.01em;
 `
 
 const PreviewCountBadge = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.62rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
 `
 
 const StatsRow = styled.div`
@@ -1975,8 +1943,8 @@ const StatsRow = styled.div`
 `
 
 const StatCard = styled.div`
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 0.45rem 0.6rem;
   display: flex;
@@ -1989,21 +1957,21 @@ const StatLabel = styled.span`
   font-size: 0.55rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: var(--color-textMuted);
 `
 
 const StatValue = styled.span`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 0.95rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const StatDelta = styled.span`
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.55rem;
   color: ${({ $tone, theme }) =>
-    $tone === "up" ? theme.colors.success : $tone === "down" ? theme.colors.error : theme.colors.textTertiary};
+    $tone === "up" ? "var(--color-success)" : $tone === "down" ? "var(--color-error)" : "var(--color-textTertiary)"};
 `
 
 const PreviewWrap = styled.div`
@@ -2014,8 +1982,8 @@ const PreviewWrap = styled.div`
 `
 
 const PreviewCard = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 0.55rem 0.65rem;
   display: flex;
@@ -2031,7 +1999,7 @@ const PreviewImg = styled.div`
     radial-gradient(circle at 30% 30%, ${({ $hueA }) => $hueA || "rgba(6, 215, 255, 0.28)"}, transparent 60%),
     radial-gradient(circle at 70% 70%, ${({ $hueB }) => $hueB || "rgba(30, 64, 175, 0.28)"}, transparent 60%),
     rgba(255, 255, 255, 0.03);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
 `
 
 const PreviewBadge = styled.span`
@@ -2045,7 +2013,7 @@ const PreviewBadge = styled.span`
   background: ${({ $tone }) =>
     $tone === "low" ? "rgba(239, 68, 68, 0.12)" : $tone === "mid" ? "rgba(245, 158, 11, 0.12)" : "rgba(16, 185, 129, 0.12)"};
   color: ${({ $tone, theme }) =>
-    $tone === "low" ? theme.colors.error : $tone === "mid" ? "#F59E0B" : theme.colors.success};
+    $tone === "low" ? "var(--color-error)" : $tone === "mid" ? "#F59E0B" : "var(--color-success)"};
   border: 1px solid ${({ $tone }) =>
     $tone === "low" ? "rgba(239, 68, 68, 0.3)" : $tone === "mid" ? "rgba(245, 158, 11, 0.3)" : "rgba(16, 185, 129, 0.3)"};
   width: fit-content;
@@ -2169,13 +2137,13 @@ function PreviewView() {
 const TerminalBody = styled.div`
   flex: 1;
   background: rgba(0, 0, 0, 0.35);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.md};
   padding: 0.7rem 0.85rem;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.7rem;
   line-height: 1.6;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   overflow: hidden;
 `
 
@@ -2184,15 +2152,15 @@ const TermLine = styled(motion.div)`
   gap: 0.35rem;
 `
 
-const TermOk = styled.span`color: ${({ theme }) => theme.colors.success};`
-const TermAccent = styled.span`color: ${({ theme }) => theme.colors.accent};`
-const TermDim = styled.span`color: ${({ theme }) => theme.colors.textTertiary};`
+const TermOk = styled.span`color: var(--color-success);`
+const TermAccent = styled.span`color: var(--color-accent);`
+const TermDim = styled.span`color: var(--color-textTertiary);`
 
 const TEST_LINES = [
   { kind: "cmd", text: "$ npm test" },
   { kind: "info", text: "PASS  src/components/ProductCard.test.tsx" },
   { kind: "info", text: "PASS  src/utils/format.test.ts" },
-  { kind: "ok", text: "  ✓ formats currency in ARS" },
+  { kind: "ok", text: "  ✓ formats date ranges" },
   { kind: "ok", text: "  ✓ truncates long names" },
   { kind: "ok", text: "  ✓ renders stock badge" },
   { kind: "info", text: "PASS  src/api/products.test.ts" },
@@ -2254,7 +2222,7 @@ function LaptopVisual({ $full }) {
   return (
     <LaptopWrap $full={$full}>
       <LaptopScreen>
-        <ScreenInner>
+        <ScreenInner data-theme="dark">
           <ScreenChrome>
             <ScreenDots>
               <span /><span /><span />
@@ -2305,7 +2273,7 @@ function SlideVisual({ kind }) {
     return <Component />
   }
   return (
-    <Panel>
+    <Panel data-theme="dark">
       <PanelChrome>
         <PanelDotsRow>
           <span /><span /><span />
@@ -2382,11 +2350,11 @@ const FullVisualHeadline = styled(motion.h1)`
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: -0.035em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 
   em {
     font-style: normal;
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2399,13 +2367,13 @@ const FullVisualHeadline = styled(motion.h1)`
     font-size: 0.72em;
     font-weight: 400;
     letter-spacing: -0.02em;
-    color: ${({ theme }) => theme.colors.textSecondary};
+    color: var(--color-textSecondary);
   }
 `
 
 const FullVisualSub = styled(motion.p)`
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 520px;
 `
@@ -2417,20 +2385,22 @@ const ArrowBtn = styled.button`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  color: ${({ theme }) => theme.colors.textSecondary};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
+  color: var(--color-textSecondary);
   cursor: pointer;
   transition: all ${({ theme }) => theme.transitions.fast};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.text};
-    border-color: ${({ theme }) => theme.colors.borderHover};
-    background: ${({ theme }) => theme.colors.bgCardHover};
+    color: var(--color-text);
+    border-color: var(--color-borderHover);
+    background: var(--color-bgCardHover);
   }
 `
 
 export function Hero() {
+  const t = useT()
+  const SLIDES = SLIDE_META.map((meta, i) => ({ ...meta, ...t.hero.slides[i] }))
   const [[idx, direction], setState] = useState([0, 1])
   const [paused, setPaused] = useState(false)
   const total = SLIDES.length
@@ -2461,7 +2431,7 @@ export function Hero() {
 
   const dotsContent = (
     <>
-      <ArrowBtn onClick={() => paginate(-1)} aria-label="Slide anterior">
+      <ArrowBtn onClick={() => paginate(-1)} aria-label={t.hero.prevSlide}>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
           <path d="M15 18l-6-6 6-6" />
         </svg>
@@ -2471,7 +2441,7 @@ export function Hero() {
           key={s.id}
           $active={i === idx}
           onClick={() => goTo(i)}
-          aria-label={`Ir a slide ${i + 1}`}
+          aria-label={`${t.hero.goToSlide} ${i + 1}`}
         >
           {i === idx && !paused && (
             <DotFill
@@ -2483,7 +2453,7 @@ export function Hero() {
           )}
         </Dot>
       ))}
-      <ArrowBtn onClick={() => paginate(1)} aria-label="Slide siguiente">
+      <ArrowBtn onClick={() => paginate(1)} aria-label={t.hero.nextSlide}>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 6l6 6-6 6" />
         </svg>
@@ -2563,7 +2533,7 @@ export function Hero() {
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </CtaPrimary>
-                  <CtaSecondary href="#proyectos">Ver caso real</CtaSecondary>
+                  <CtaSecondary href="#proyectos">{t.hero.secondaryCta}</CtaSecondary>
                 </CtaRow>
               </motion.div>
             </AnimatePresence>

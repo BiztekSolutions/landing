@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { siteConfig } from "../config/siteConfig"
 import { AbastolinkMockup } from "./AbastolinkMockup"
+import { useT } from "../context/LangContext"
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -66,7 +67,7 @@ const EyebrowChip = styled.div`
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: ${({ theme }) => theme.colors.accentWarm};
+  color: var(--color-accentWarm);
   width: fit-content;
 `
 
@@ -75,7 +76,7 @@ const SectionTitle = styled.h2`
   font-size: clamp(1.65rem, 2.6vw, 2.15rem);
   font-weight: 500;
   letter-spacing: -0.03em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const CaseHead = styled(motion.div)`
@@ -96,10 +97,10 @@ const CaseTitle = styled.h3`
   font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.04em;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 
   span {
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -108,7 +109,7 @@ const CaseTitle = styled.h3`
 
 const CaseSubtitle = styled.p`
   font-size: 1.15rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.6;
   max-width: 640px;
 `
@@ -118,8 +119,8 @@ const MockupWrap = styled(motion.div)`
   margin: 0 auto ${({ theme }) => theme.spacing.xxl};
   max-width: 1120px;
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.bgElevated};
+  border: 1px solid var(--color-border);
+  background: var(--color-bgElevated);
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
   overflow: hidden;
 
@@ -128,7 +129,7 @@ const MockupWrap = styled(motion.div)`
     position: absolute;
     inset: -1px;
     border-radius: ${({ theme }) => theme.borderRadius.lg};
-    background: ${({ theme }) => theme.gradients.brand};
+    background: var(--gradient-brand);
     opacity: 0.15;
     filter: blur(50px);
     z-index: -1;
@@ -141,8 +142,8 @@ const BrowserChrome = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  background: ${({ theme }) => theme.colors.bgAlt};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgAlt);
+  border-bottom: 1px solid var(--color-border);
 `
 
 const Dot = styled.span`
@@ -158,11 +159,11 @@ const UrlBar = styled.div`
   margin-right: auto;
   padding: 4px 14px;
   border-radius: ${({ theme }) => theme.borderRadius.full};
-  background: ${({ theme }) => theme.colors.bgCard};
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  background: var(--color-bgCard);
+  border: 1px solid var(--color-border);
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   min-width: 220px;
   text-align: center;
 `
@@ -197,7 +198,7 @@ const StoryHeading = styled.h4`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.3rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.accent};
+  color: var(--color-accent);
   letter-spacing: -0.02em;
 
   &:not(:first-child) {
@@ -207,7 +208,7 @@ const StoryHeading = styled.h4`
 
 const StoryParagraph = styled.p`
   font-size: 1.05rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
   line-height: 1.7;
 `
 
@@ -218,9 +219,9 @@ const SideCol = styled(motion.div)`
 `
 
 const Card = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid var(--color-border);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
-  background: ${({ theme }) => theme.colors.bgCard};
+  background: var(--color-bgCard);
   padding: ${({ theme }) => theme.spacing.md};
   backdrop-filter: blur(8px);
 `
@@ -230,7 +231,7 @@ const CardTitle = styled.h5`
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: ${({ theme }) => theme.colors.textTertiary};
+  color: var(--color-textTertiary);
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `
 
@@ -240,7 +241,7 @@ const HighlightRow = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing.sm};
   padding: 0.85rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
 
   &:last-child {
     border-bottom: none;
@@ -250,14 +251,14 @@ const HighlightRow = styled.div`
 
 const HighlightLabel = styled.span`
   font-size: 0.95rem;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: var(--color-textSecondary);
 `
 
 const HighlightValue = styled.span`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.5rem;
   font-weight: 600;
-  background: ${({ theme }) => theme.gradients.brand};
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -275,20 +276,20 @@ const Chip = styled.span`
   align-items: center;
   gap: 0.45rem;
   padding: 0.4rem 0.85rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: ${({ theme }) => theme.colors.bgCard};
+  border: 1px solid var(--color-border);
+  background: var(--color-bgCard);
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 0.78rem;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
 `
 
 const ChipDot = styled.span`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 8px ${({ theme }) => theme.colors.accentGlow};
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accentGlow);
 `
 
 const ArrowLinkWrap = styled(motion.div)`
@@ -304,19 +305,19 @@ const ArrowLink = styled.a`
   font-family: ${({ theme }) => theme.fonts.display};
   font-size: 1.05rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--color-text);
   padding: 0.5rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 1px solid var(--color-border);
   transition: all ${({ theme }) => theme.transitions.normal};
 
   svg {
     transition: transform ${({ theme }) => theme.transitions.normal};
-    color: ${({ theme }) => theme.colors.accent};
+    color: var(--color-accent);
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.accent};
-    border-color: ${({ theme }) => theme.colors.borderAccent};
+    color: var(--color-accent);
+    border-color: var(--color-borderAccent);
   }
 
   &:hover svg {
@@ -325,7 +326,8 @@ const ArrowLink = styled.a`
 `
 
 export function Projects() {
-  const project = siteConfig.projects[0]
+  const t = useT()
+  const project = t.projects.items[0]
   if (!project) return null
 
   return (
@@ -333,8 +335,8 @@ export function Projects() {
       <BgAccent />
       <Container>
         <SectionHead {...fadeUp}>
-          <EyebrowChip>05 · Trabajos</EyebrowChip>
-          <SectionTitle>Últimos proyectos a producción</SectionTitle>
+          <EyebrowChip>{t.projects.eyebrow}</EyebrowChip>
+          <SectionTitle>{t.projects.title}</SectionTitle>
         </SectionHead>
 
         <CaseHead {...fadeUp}>
@@ -367,9 +369,9 @@ export function Projects() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <StoryHeading>El problema</StoryHeading>
+            <StoryHeading>{t.projects.problemLabel}</StoryHeading>
             <StoryParagraph>{project.problem}</StoryParagraph>
-            <StoryHeading>La solución</StoryHeading>
+            <StoryHeading>{t.projects.solutionLabel}</StoryHeading>
             <StoryParagraph>{project.solution}</StoryParagraph>
           </StoryCol>
 
@@ -380,7 +382,7 @@ export function Projects() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
             <Card>
-              <CardTitle>Resultados</CardTitle>
+              <CardTitle>{t.projects.resultsLabel}</CardTitle>
               {project.highlights.map((h) => (
                 <HighlightRow key={h.label}>
                   <HighlightLabel>{h.label}</HighlightLabel>
@@ -390,7 +392,7 @@ export function Projects() {
             </Card>
 
             <Card>
-              <CardTitle>Stack</CardTitle>
+              <CardTitle>{t.projects.stackLabel}</CardTitle>
               <Chips>
                 {project.stack.map((tech) => (
                   <Chip key={tech}>
@@ -405,7 +407,7 @@ export function Projects() {
 
         <ArrowLinkWrap {...fadeUp}>
           <ArrowLink href="#cta">
-            ¿Querés algo así para tu empresa? Hablemos
+            {t.projects.cta}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
