@@ -5,8 +5,21 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "postbuild": "react-snap",
     "dev": "vite",
     "preview": "vite preview"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "destination": "dist",
+    "include": ["/", "/privacy-policy", "/terms"],
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    },
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "headless": true,
+    "inlineCss": false
   },
   "dependencies": {
     "framer-motion": "latest",
@@ -20,6 +33,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "react-snap": "^1.23.0",
     "vite": "^5.1.0"
   }
 }

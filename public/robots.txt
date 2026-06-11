@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://biztek.com/sitemap.xml
+Sitemap: https://biztek.com.ar/sitemap.xml
